@@ -144,14 +144,7 @@ const UserList = () => {
       key: 'actions',
       render: (_: any, record: any) => (
         <Space>
-          <Button
-            type="primary"
-            icon={<EditOutlined />}
-            onClick={() => navigate(`/users/edit/${record.id}`)}
-            size="small"
-          >
-            Edit
-          </Button>
+
           <Popconfirm
             title="Delete user"
             description="Are you sure you want to delete this user?"

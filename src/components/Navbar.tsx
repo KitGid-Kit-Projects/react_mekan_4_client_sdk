@@ -30,11 +30,6 @@ const Navbar = () => {
       key: 'users',
       icon: <TeamOutlined />,
       label: <Link to="/users">Users</Link>
-    },
-    {
-      key: 'profile',
-      icon: <UserOutlined />,
-      label: <Link to="/profile">Profile</Link>
     }
   ] : [
     {
