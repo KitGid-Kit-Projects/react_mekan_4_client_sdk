@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { collection, addDoc } from 'firebase/firestore';
+import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { Layout, Card, Form, Input, Button, message, InputNumber } from 'antd';
 import { SaveOutlined, ArrowLeftOutlined } from '@ant-design/icons';
@@ -20,18 +20,20 @@ const AddUser = () => {
 
     setLoading(true);
     try {
-      await addDoc(collection(db, 'usersData'), {
+      // Use setDoc instead of addDoc, so document ID = user's UID
+      await setDoc(doc(db, 'usersData', user.uid), {
         uid: user.uid,
         displayName: values.displayName,
         age: values.age,
         city: values.city,
         photoURL: values.photoURL || '',
-        createdAt: new Date()
+        createdAt: new Date(),
       });
 
       message.success('User data added successfully!');
       navigate('/users');
     } catch (error: any) {
+      console.error(error);
       message.error('Failed to add user data');
     } finally {
       setLoading(false);
@@ -43,7 +45,7 @@ const AddUser = () => {
       <Navbar />
       <Content className="p-6 bg-muted">
         <div className="max-w-2xl mx-auto">
-          <Button 
+          <Button
             icon={<ArrowLeftOutlined />}
             onClick={() => navigate('/users')}
             className="mb-6"
@@ -54,12 +56,7 @@ const AddUser = () => {
           <Card>
             <h1 className="text-3xl font-bold text-foreground mb-6">Add User Data</h1>
 
-            <Form
-              form={form}
-              layout="vertical"
-              onFinish={onFinish}
-              size="large"
-            >
+            <Form form={form} layout="vertical" onFinish={onFinish} size="large">
               <Form.Item
                 label="Name"
                 name="displayName"
@@ -73,8 +70,8 @@ const AddUser = () => {
                 name="age"
                 rules={[{ required: true, message: 'Please enter age' }]}
               >
-                <InputNumber 
-                  placeholder="Enter age" 
+                <InputNumber
+                  placeholder="Enter age"
                   min={1}
                   max={120}
                   className="w-full"
@@ -89,17 +86,14 @@ const AddUser = () => {
                 <Input placeholder="Enter city" />
               </Form.Item>
 
-              <Form.Item
-                label="Photo URL (Optional)"
-                name="photoURL"
-              >
+              <Form.Item label="Photo URL (Optional)" name="photoURL">
                 <Input placeholder="Enter photo URL" />
               </Form.Item>
 
               <Form.Item>
-                <Button 
-                  type="primary" 
-                  htmlType="submit" 
+                <Button
+                  type="primary"
+                  htmlType="submit"
                   loading={loading}
                   icon={<SaveOutlined />}
                   block
