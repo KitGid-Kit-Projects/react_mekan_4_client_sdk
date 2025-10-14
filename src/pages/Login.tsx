@@ -1,24 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+
 import { Form, Input, Button, Card, Divider, Space } from 'antd';
 import { GoogleOutlined, MailOutlined, LockOutlined } from '@ant-design/icons';
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
-  const { login, loginWithGoogle, user } = useAuth();
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    if (user) {
-      navigate('/dashboard');
-    }
-  }, [user, navigate]);
+  const navigate = useNavigate();
 
   const onFinish = async (values: { email: string; password: string }) => {
     setLoading(true);
     try {
-      await login(values.email, values.password);
       navigate('/dashboard');
     } catch (error) {
       console.error(error);
@@ -30,7 +23,6 @@ const Login = () => {
   const handleGoogleLogin = async () => {
     setLoading(true);
     try {
-      await loginWithGoogle();
       navigate('/dashboard');
     } catch (error) {
       console.error(error);

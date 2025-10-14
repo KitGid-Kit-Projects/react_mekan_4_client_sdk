@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
 import { Layout, Button, Space, Card, Row, Col } from 'antd';
 import { 
   RocketOutlined, 
@@ -12,7 +11,7 @@ import Navbar from '../components/Navbar';
 const { Content } = Layout;
 
 const Home = () => {
-  const { user } = useAuth();
+
   const navigate = useNavigate();
 
   const features = [
@@ -51,15 +50,7 @@ const Home = () => {
               A modern React application with Firebase authentication, Firestore, and Storage
             </p>
             <Space size="large">
-              {user ? (
-                <Button 
-                  type="primary" 
-                  size="large"
-                  onClick={() => navigate('/dashboard')}
-                >
-                  Go to Dashboard
-                </Button>
-              ) : (
+         
                 <>
                   <Button 
                     type="primary" 
@@ -75,7 +66,7 @@ const Home = () => {
                     Sign In
                   </Button>
                 </>
-              )}
+
             </Space>
           </div>
 
@@ -101,14 +92,7 @@ const Home = () => {
               <p className="text-lg mb-6 opacity-90">
                 Create your account and start managing your data today
               </p>
-              {!user && (
-                <Button 
-                  size="large"
-                  onClick={() => navigate('/register')}
-                >
-                  Sign Up Now
-                </Button>
-              )}
+             
             </div>
           </Card>
         </div>

@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+
 import { Layout, Menu, Button, Avatar, Dropdown, Space } from 'antd';
 import { 
   HomeOutlined, 
@@ -12,31 +12,14 @@ import {
 const { Header } = Layout;
 
 const Navbar = () => {
-  const { user, userProfile, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    await logout();
+
     navigate('/login');
   };
 
-  const menuItems = user ? [
-    {
-      key: 'dashboard',
-      icon: <DashboardOutlined />,
-      label: <Link to="/dashboard">Dashboard</Link>
-    },
-    {
-      key: 'users',
-      icon: <TeamOutlined />,
-      label: <Link to="/users">Users</Link>
-    },
-    {
-      key: 'profile',
-      icon: <UserOutlined />,
-      label: <Link to="/profile">Profile</Link>
-    }
-  ] : [
+  const menuItems =  [
     {
       key: 'home',
       icon: <HomeOutlined />,
@@ -72,14 +55,7 @@ const Navbar = () => {
       </div>
       
       <div className="flex items-center gap-4">
-        {user ? (
-          <Dropdown menu={{ items: userMenuItems }} placement="bottomRight">
-            <Space className="cursor-pointer">
-              <Avatar icon={<UserOutlined />} />
-              <span className="text-foreground">{userProfile?.displayName}</span>
-            </Space>
-          </Dropdown>
-        ) : (
+       
           <Space>
             <Button type="link" onClick={() => navigate('/login')}>
               Login
@@ -88,7 +64,7 @@ const Navbar = () => {
               Sign Up
             </Button>
           </Space>
-        )}
+
       </div>
     </Header>
   );

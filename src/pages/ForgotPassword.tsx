@@ -1,18 +1,16 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
 import { Form, Input, Button, Card } from 'antd';
 import { MailOutlined, ArrowLeftOutlined } from '@ant-design/icons';
 
 const ForgotPassword = () => {
   const [loading, setLoading] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
-  const { resetPassword } = useAuth();
+
 
   const onFinish = async (values: { email: string }) => {
     setLoading(true);
     try {
-      await resetPassword(values.email);
       setEmailSent(true);
     } catch (error) {
       console.error(error);
