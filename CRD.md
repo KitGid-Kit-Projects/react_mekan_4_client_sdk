@@ -2,10 +2,12 @@
 
 | No | Tree                                        | Code Line Count | Path                                      |
 |----|---------------------------------------------|------------------|-------------------------------------------|
-| 1  | App.tsx                                     | 39               | ./src/App.tsx                             |
+| 1  | App.tsx                                     | 38               | ./src/App.tsx                             |
 | 2  | └── (Outlet → Routed)                       |                  |                                           |
-| 3  |     └── users/                              |                  |                                           |
-| 4  |         └── EditUser                        | 203              | ./src/pages/users/EditUser.tsx            |
+| 3  |     ├── Dashboard                           | 116              | ./src/pages/users/Dashboard.tsx           |
+| 4  |     └── users/                              |                  |                                           |
+| 5  |         ├── AddUser                         | 113              | ./src/pages/users/AddUser.tsx             |
+| 6  |         └── UserList                        | 230              | ./src/pages/users/UserList.tsx            |
 |----|---------------------------------------------|------------------|-------------------------------------------|
-|    | TOTAL CODE LINES                            | 242              |                                           |
+|    | TOTAL CODE LINES                            | 497              |                                           |
 |----|---------------------------------------------|------------------|-------------------------------------------|
