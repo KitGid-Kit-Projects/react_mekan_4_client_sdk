@@ -1,122 +1,163 @@
-// Import React hooks for managing component state and lifecycle
+// Import React hooks for managing state and lifecycle
 import { useState, useEffect } from 'react';
-// Import navigation hook for page redirection
+// Import navigation hook from React Router for redirection
 import { useNavigate } from 'react-router-dom';
-// Import custom authentication context
+// Import authentication context to access current user and their profile
 import { useAuth } from '../context/AuthContext';
-// Import Firestore functions for querying, deleting, and listening to data
+// Import Firebase Firestore methods for querying, listening, and deleting data
 import { collection, query, where, onSnapshot, deleteDoc, doc, getDocs } from 'firebase/firestore';
-// Import configured Firestore database
+// Import Firestore database instance
 import { db } from '../firebase';
+// Import Ant Design message for notifications
 import { message } from 'antd';
-const useUserList=()=>{
-  // Get user and their profile data from AuthContext
+
+// Custom React hook for fetching and managing the user list
+const useUserList = () => {
+  // Extract current authenticated user and profile data from AuthContext
   const { user, userProfile } = useAuth();
-  // Initialize navigation hook
+
+  // Initialize navigation utility to redirect between pages
   const navigate = useNavigate();
-  // State for all user documents fetched from Firestore
+
+  // State to hold all user documents fetched from Firestore
   const [users, setUsers] = useState<any[]>([]);
-  // State for users filtered by search input
+
+  // State to hold filtered users based on search input
   const [filteredUsers, setFilteredUsers] = useState<any[]>([]);
-  // Loading state for data fetching
+
+  // State to track whether data is being loaded
   const [loading, setLoading] = useState(true);
-  // State for storing current search text
+
+  // State to store the current text entered in the search input
   const [searchText, setSearchText] = useState('');
 
-  // useEffect hook runs when user or userProfile changes
+  // Fetch and listen to user data whenever `user` or `userProfile` changes
   useEffect(() => {
-    // Exit early if no authenticated user
+    // Stop execution if no user is authenticated
     if (!user) return;
 
-    // Determine if logged-in user is an admin
+    // Check if the logged-in user has an admin role
     const isAdmin = userProfile?.role === 'admin';
 
-    // Query Firestore: admin sees all users; non-admin sees only their data
-    const q = isAdmin 
+    // Define Firestore query:
+    // Admins see all users; non-admins see only their own data
+    const q = isAdmin
       ? query(collection(db, 'usersData'))
       : query(collection(db, 'usersData'), where('uid', '==', user.uid));
 
-    // Subscribe to live updates (real-time listener)
+    // Subscribe to live updates using Firestore onSnapshot (real-time listener)
     const unsubscribe = onSnapshot(
       q,
       (snapshot) => {
-        // Map snapshot documents to a usable array
+        // Convert Firestore snapshot into a plain array of user objects
         const userData = snapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data()
         }));
-        // Update both full and filtered data states
+        // Update both `users` and `filteredUsers` state
         setUsers(userData);
         setFilteredUsers(userData);
         setLoading(false);
       },
       (error) => {
-        // Handle and display errors
+        // Display error message if fetching fails
         message.error('Failed to load users');
         setLoading(false);
       }
     );
 
-    // Cleanup subscription on component unmount
+    // Clean up the real-time listener when the component unmounts
     return () => unsubscribe();
   }, [user, userProfile]);
 
-  // Function to filter user data by search text
+  // Function to filter users based on search text
   const handleSearch = (value: string) => {
+    // Update search text state
     setSearchText(value);
 
-    // Reset if search box is cleared
+    // If the search box is empty, reset to show all users
     if (!value) {
       setFilteredUsers(users);
       return;
     }
 
-    // Filter by displayName, email, or city (case-insensitive)
-    const filtered = users.filter(user => 
+    // Filter users by name, email, or city (case-insensitive)
+    const filtered = users.filter(user =>
       user.displayName?.toLowerCase().includes(value.toLowerCase()) ||
       user.email?.toLowerCase().includes(value.toLowerCase()) ||
       user.city?.toLowerCase().includes(value.toLowerCase())
     );
 
+    // Update filtered users list
     setFilteredUsers(filtered);
   };
 
   // Function to delete a user document from Firestore
   const handleDelete = async (id: string) => {
     try {
+      // Delete the selected user's document by ID
       await deleteDoc(doc(db, 'usersData', id));
+      // Show success message
       message.success('User deleted successfully!');
     } catch (error: any) {
+      // Display error if deletion fails
       message.error('Failed to delete user');
     }
   };
 
-  // Function to manually refresh user data from Firestore
+  // Function to manually refresh (re-fetch) all users from Firestore
   const handleRefresh = async () => {
-    setLoading(true);
+    setLoading(true); // Start loading indicator
     try {
+      // Determine admin privileges again
       const isAdmin = userProfile?.role === 'admin';
-      const q = isAdmin 
+      // Define query based on user role
+      const q = isAdmin
         ? query(collection(db, 'usersData'))
         : query(collection(db, 'usersData'), where('uid', '==', user?.uid));
 
+      // Fetch snapshot data manually (not live)
       const snapshot = await getDocs(q);
+
+      // Map snapshot to array of user objects
       const userData = snapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data()
       }));
+
+      // Update user states
       setUsers(userData);
       setFilteredUsers(userData);
+
+      // Notify successful refresh
       message.success('Users refreshed!');
     } catch (error) {
+      // Notify failure
       message.error('Failed to refresh users');
     } finally {
+      // Stop loading indicator
       setLoading(false);
     }
   };
-    return {user, userProfile,users, setUsers,navigate,filteredUsers, setFilteredUsers,loading,setLoading,
-        searchText, setSearchText,handleSearch,handleDelete,handleRefresh
-     }
-}
 
-export default useUserList
+  // Return states and handlers to be used in user management components
+  return {
+    user,                // Authenticated user
+    userProfile,         // Profile details (e.g., role)
+    users,               // All users from Firestore
+    setUsers,            // Setter for users
+    navigate,            // Navigation function
+    filteredUsers,       // Filtered list after search
+    setFilteredUsers,    // Setter for filtered users
+    loading,             // Loading state
+    setLoading,          // Setter for loading state
+    searchText,          // Current search input text
+    setSearchText,       // Setter for search input text
+    handleSearch,        // Search handler
+    handleDelete,        // Delete handler
+    handleRefresh        // Refresh handler
+  };
+};
+
+// Export the custom hook for use in user management components
+export default useUserList;

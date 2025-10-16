@@ -1,50 +1,69 @@
+// Import authentication context hook to get current user
 import { useAuth } from "@/context/AuthContext";
+// Import Ant Design utilities for form management and notifications
 import { Form, message } from "antd";
+// Import Firebase Firestore functions for writing data
 import { doc, setDoc } from "firebase/firestore";
+// Import React hooks for state management
 import { useState } from "react";
+// Import navigation hook from React Router for page redirection
 import { useNavigate } from "react-router-dom";
+// Import Firestore database instance from your Firebase configuration
 import { db } from '../firebase';
-const useAddUser=()=>{
-  // Access the authenticated user
+
+// Custom hook for adding a new user to Firestore
+const useAddUser = () => {
+  // Access the authenticated user from AuthContext
   const { user } = useAuth();
-  // Initialize the navigate function for page redirection
+
+  // Initialize navigate function for redirecting to other pages
   const navigate = useNavigate();
-  // Initialize Ant Design form instance
+
+  // Create a form instance using Ant Design’s Form hook
   const [form] = Form.useForm();
-  // State for tracking loading status
+
+  // Declare loading state to control the button spinner and UI feedback
   const [loading, setLoading] = useState(false);
 
-  // Handle form submission
+  // Function triggered when the form is submitted successfully
   const onFinish = async (values: any) => {
-    // Exit if user is not authenticated
+    // Exit early if there’s no authenticated user
     if (!user) return;
 
-    setLoading(true); // Start loading indicator
+    // Set loading state to true to show spinner on submit button
+    setLoading(true);
+
     try {
-      // Create or overwrite document with user's UID as ID
+      // Create or overwrite a document in the 'usersData' collection
+      // The document ID will be the current user's UID
       await setDoc(doc(db, 'usersData', user.uid), {
-        uid: user.uid, // Unique user ID
-        displayName: values.displayName, // User name
-        age: values.age, // User age
-        city: values.city, // User city
-        photoURL: values.photoURL || '', // Optional photo URL
-        createdAt: new Date(), // Store timestamp for creation
+        uid: user.uid,                 // Store unique user ID
+        displayName: values.displayName, // Store user’s name from form
+        age: values.age,                 // Store user’s age
+        city: values.city,               // Store user’s city
+        photoURL: values.photoURL || '', // Optional photo URL (default empty)
+        createdAt: new Date(),           // Timestamp of when data was created
       });
 
-      // Notify success and navigate to user list
+      // Show a success notification in UI
       message.success('User data added successfully!');
+      // Redirect to the user list page
       navigate('/users');
+
     } catch (error: any) {
-      // Log error for debugging and show UI message
+      // Log the error in console for debugging
       console.error(error);
+      // Show error notification in UI
       message.error('Failed to add user data');
     } finally {
-      // Stop loading indicator
+      // Stop loading spinner regardless of success or failure
       setLoading(false);
     }
   };
 
-return {user,navigate,form,loading,setLoading,onFinish}
-}
+  // Return useful states and handlers for the component to use
+  return { user, navigate, form, loading, setLoading, onFinish };
+};
 
-export default useAddUser
+// Export custom hook to be used across components
+export default useAddUser;
