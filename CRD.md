@@ -14,7 +14,7 @@
 | 9  | ├── HomeContent                             | 93               | ./src/components/HomeContent.tsx          |
 | 10 | ├── LoginForm                               | 79               | ./src/components/LoginForm.tsx            |
 | 11 | ├── Navbar                                  | 92               | ./src/components/Navbar.tsx               |
-| 12 | └── RegisterForm                            | —                | ./src/components/RegisterForm.tsx         |
+| 12 | └── RegisterForm                            | 108              | ./src/components/RegisterForm.tsx         |
 |----|---------------------------------------------|------------------|-------------------------------------------|
 | 13 | hooks/                                      |                  |                                           |
 | 14 | ├── useForgot                               | 45               | ./src/hooks/useForgot.ts                  |
@@ -25,5 +25,5 @@
 | 18 | firebase.js                                 | 34               | ./src/firebase.js                         |
 | 19 | .env                                        | 9                | ./.env                                    |
 |----|---------------------------------------------|------------------|-------------------------------------------|
-|    | TOTAL CODE LINES                            | 996              |                                           |
+|    | TOTAL CODE LINES                            | 1004             |                                           |
 |----|---------------------------------------------|------------------|-------------------------------------------|
