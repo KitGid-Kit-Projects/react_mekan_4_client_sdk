@@ -7,8 +7,8 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
 import Dashboard from "./pages/Dashboard";
-import UserList from "./pages/users/UserList";
-import AddUser from "./pages/users/AddUser";
+import UserList from "./pages/UserList";
+import AddUser from "./pages/AddUser";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
