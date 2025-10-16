@@ -4,51 +4,13 @@ import { useNavigate, Link } from 'react-router-dom'; // Navigation and linking 
 import { useAuth } from '../context/AuthContext'; // Custom authentication context providing login methods and user info
 import { Form, Input, Button, Card, Divider } from 'antd'; // Ant Design UI components
 import { GoogleOutlined, MailOutlined, LockOutlined } from '@ant-design/icons'; // Ant Design icons for styling inputs/buttons
+import useLogin from '@/hooks/useLogin';
 
 // Define the Login component
 const Login = () => {
-  // Local state for loading indicator (e.g., showing spinner while logging in)
-  const [loading, setLoading] = useState(false);
-
-  // Destructure authentication methods and user from AuthContext
-  const { login, loginWithGoogle, user } = useAuth();
-
-  // Hook for navigating programmatically between routes
-  const navigate = useNavigate();
-
-  // Effect: if the user is already logged in, redirect to dashboard
-  useEffect(() => {
-    if (user) {
-      navigate('/dashboard');
-    }
-  }, [user, navigate]); // Runs when `user` or `navigate` changes
-
-  // Function triggered when form is successfully submitted
-  const onFinish = async (values: { email: string; password: string }) => {
-    setLoading(true); // Start loading state
-    try {
-      await login(values.email, values.password); // Call login function from AuthContext
-      navigate('/dashboard'); // Redirect to dashboard on success
-    } catch (error) {
-      console.error(error); // Log error for debugging
-    } finally {
-      setLoading(false); // Stop loading state
-    }
-  };
-
-  // Function for handling Google sign-in
-  const handleGoogleLogin = async () => {
-    setLoading(true); // Start loading state
-    try {
-      await loginWithGoogle(); // Call Google login method from AuthContext
-      navigate('/dashboard'); // Redirect to dashboard on success
-    } catch (error) {
-      console.error(error); // Log any errors
-    } finally {
-      setLoading(false); // Stop loading
-    }
-  };
-
+const {
+    loading, setLoading,navigate,onFinish,handleGoogleLogin
+}=useLogin()
   // JSX: what gets rendered to the UI
   return (
     // Center the login card vertically and horizontally on the screen
