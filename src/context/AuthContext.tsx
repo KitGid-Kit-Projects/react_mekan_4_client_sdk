@@ -1,29 +1,32 @@
+// Import necessary React and Firebase tools
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { 
-  User,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  signOut,
-  sendPasswordResetEmail,
-  signInWithPopup
+  User, // Firebase User type
+  onAuthStateChanged, // Listener for authentication state changes
+  signInWithEmailAndPassword, // Email/password login
+  createUserWithEmailAndPassword, // Email/password registration
+  signOut, // Logout function
+  sendPasswordResetEmail, // Send reset password email
+  signInWithPopup // Google login
 } from 'firebase/auth';
-import { doc, setDoc, getDoc } from 'firebase/firestore';
-import { auth, googleProvider, db } from '../firebase';
-import { message } from 'antd';
+import { doc, setDoc, getDoc } from 'firebase/firestore'; // Firestore document utilities
+import { auth, googleProvider, db } from '../firebase'; // Firebase config
+import { message } from 'antd'; // For showing messages (success/error)
 
+// Define the structure of user profile stored in Firestore
 interface UserProfile {
   uid: string;
   email: string;
   displayName?: string;
-  role: 'admin' | 'user';
+  role: 'admin' | 'user'; // Only two roles possible
   createdAt: Date;
 }
 
+// Define the structure of the authentication context
 interface AuthContextType {
-  user: User | null;
-  userProfile: UserProfile | null;
-  loading: boolean;
+  user: User | null; // Firebase user
+  userProfile: UserProfile | null; // Firestore user profile
+  loading: boolean; // Loading state while checking auth
   login: (email: string, password: string) => Promise<void>;
   register: (email: string, password: string, displayName?: string) => Promise<void>;
   loginWithGoogle: () => Promise<void>;
@@ -31,8 +34,10 @@ interface AuthContextType {
   resetPassword: (email: string) => Promise<void>;
 }
 
+// Create the AuthContext
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+// Custom hook for using AuthContext easily
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
@@ -41,30 +46,37 @@ export const useAuth = () => {
   return context;
 };
 
+// Provider component that wraps the entire app and provides auth state
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  // States for Firebase user, Firestore profile, and loading indicator
   const [user, setUser] = useState<User | null>(null);
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
 
+  // Check if a user is logged in (runs when app loads or auth changes)
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      setUser(user);
-      
+      setUser(user); // Set Firebase user
+
       if (user) {
+        // Get user profile from Firestore
         const profileDoc = await getDoc(doc(db, 'usersData', user.uid));
         if (profileDoc.exists()) {
-          setUserProfile(profileDoc.data() as UserProfile);
+          setUserProfile(profileDoc.data() as UserProfile); // Save profile
         }
       } else {
+        // If no user is logged in, clear the profile
         setUserProfile(null);
       }
-      
-      setLoading(false);
+
+      setLoading(false); // Stop loading once checked
     });
 
+    // Cleanup listener when component unmounts
     return unsubscribe;
   }, []);
 
+  // Login with email and password
   const login = async (email: string, password: string) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
@@ -75,14 +87,17 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  // Register new user with email and password
   const register = async (email: string, password: string, displayName?: string) => {
     try {
+      // Create user in Firebase Authentication
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       
+      // Save user info in Firestore
       await setDoc(doc(db, 'usersData', userCredential.user.uid), {
         uid: userCredential.user.uid,
         email: userCredential.user.email,
-        displayName: displayName || email.split('@')[0],
+        displayName: displayName || email.split('@')[0], // Default to email name if no displayName
         role: 'user',
         createdAt: new Date()
       });
@@ -94,12 +109,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  // Login with Google account
   const loginWithGoogle = async () => {
     try {
-      const result = await signInWithPopup(auth, googleProvider);
+      const result = await signInWithPopup(auth, googleProvider); // Open Google login popup
       
+      // Check if user already exists in Firestore
       const userDoc = await getDoc(doc(db, 'usersData', result.user.uid));
       if (!userDoc.exists()) {
+        // If not, create a new user document
         await setDoc(doc(db, 'usersData', result.user.uid), {
           uid: result.user.uid,
           email: result.user.email,
@@ -116,9 +134,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  // Logout user
   const logout = async () => {
     try {
-      await signOut(auth);
+      await signOut(auth); // Firebase logout
       message.success('Logged out successfully!');
     } catch (error: any) {
       message.error(error.message || 'Logout failed');
@@ -126,6 +145,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  // Send password reset email
   const resetPassword = async (email: string) => {
     try {
       await sendPasswordResetEmail(auth, email);
@@ -136,6 +156,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  // Context value that will be available to all components
   const value = {
     user,
     userProfile,
@@ -147,5 +168,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     resetPassword
   };
 
+  // Return the provider wrapping the app
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
