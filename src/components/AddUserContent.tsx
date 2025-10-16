@@ -1,50 +1,15 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
-import { doc, setDoc } from 'firebase/firestore';
-import { db } from '../../firebase';
+// Import UI components and utilities from Ant Design
 import { Layout, Card, Form, Input, Button, message, InputNumber } from 'antd';
+// Import icons for button visuals
 import { SaveOutlined, ArrowLeftOutlined } from '@ant-design/icons';
-import Navbar from '../../components/Navbar';
-
+// Destructure Layout for convenience
 const { Content } = Layout;
+const AddUserContent=({navigate,form,onFinish,loading})=>{
 
-const AddUser = () => {
-  const { user } = useAuth();
-  const navigate = useNavigate();
-  const [form] = Form.useForm();
-  const [loading, setLoading] = useState(false);
-
-  const onFinish = async (values: any) => {
-    if (!user) return;
-
-    setLoading(true);
-    try {
-      // Use setDoc instead of addDoc, so document ID = user's UID
-      await setDoc(doc(db, 'usersData', user.uid), {
-        uid: user.uid,
-        displayName: values.displayName,
-        age: values.age,
-        city: values.city,
-        photoURL: values.photoURL || '',
-        createdAt: new Date(),
-      });
-
-      message.success('User data added successfully!');
-      navigate('/users');
-    } catch (error: any) {
-      console.error(error);
-      message.error('Failed to add user data');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
-    <Layout className="min-h-screen">
-      <Navbar />
-      <Content className="p-6 bg-muted">
+    return (
+          <Content className="p-6 bg-muted">
         <div className="max-w-2xl mx-auto">
+          {/* Back button for navigation */}
           <Button
             icon={<ArrowLeftOutlined />}
             onClick={() => navigate('/users')}
@@ -53,10 +18,20 @@ const AddUser = () => {
             Back to Users
           </Button>
 
+          {/* Card container for form */}
           <Card>
-            <h1 className="text-3xl font-bold text-foreground mb-6">Add User Data</h1>
+            <h1 className="text-3xl font-bold text-foreground mb-6">
+              Add User Data
+            </h1>
 
-            <Form form={form} layout="vertical" onFinish={onFinish} size="large">
+            {/* Ant Design form for user input */}
+            <Form
+              form={form}
+              layout="vertical"
+              onFinish={onFinish}
+              size="large"
+            >
+              {/* Name field */}
               <Form.Item
                 label="Name"
                 name="displayName"
@@ -65,6 +40,7 @@ const AddUser = () => {
                 <Input placeholder="Enter name" />
               </Form.Item>
 
+              {/* Age field */}
               <Form.Item
                 label="Age"
                 name="age"
@@ -78,6 +54,7 @@ const AddUser = () => {
                 />
               </Form.Item>
 
+              {/* City field */}
               <Form.Item
                 label="City"
                 name="city"
@@ -86,10 +63,15 @@ const AddUser = () => {
                 <Input placeholder="Enter city" />
               </Form.Item>
 
-              <Form.Item label="Photo URL (Optional)" name="photoURL">
+              {/* Optional photo URL field */}
+              <Form.Item
+                label="Photo URL (Optional)"
+                name="photoURL"
+              >
                 <Input placeholder="Enter photo URL" />
               </Form.Item>
 
+              {/* Submit button */}
               <Form.Item>
                 <Button
                   type="primary"
@@ -106,8 +88,7 @@ const AddUser = () => {
           </Card>
         </div>
       </Content>
-    </Layout>
-  );
-};
+    )
+}
 
-export default AddUser;
+export default   AddUserContent

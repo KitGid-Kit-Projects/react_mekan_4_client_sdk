@@ -1,16 +1,16 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
-import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedRoute from "./context/ProtectedRoute";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
 import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
-import UserList from "./pages/users/UserList";
-import AddUser from "./pages/users/AddUser";
-import EditUser from "./pages/users/EditUser";
+import UserList from "./pages/UserList";
+import AddUser from "./pages/AddUser";
+import EditUser from "./pages/EditUser";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();

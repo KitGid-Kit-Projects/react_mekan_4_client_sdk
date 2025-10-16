@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 import { collection, query, where, onSnapshot, deleteDoc, doc, getDocs } from 'firebase/firestore';
-import { db } from '../../firebase';
+import { db } from '../firebase';
 import { Layout, Table, Button, Space, Popconfirm, message, Input, Card } from 'antd';
 import { 
   EditOutlined, 
@@ -11,7 +11,7 @@ import {
   SearchOutlined,
   ReloadOutlined
 } from '@ant-design/icons';
-import Navbar from '../../components/Navbar';
+import Navbar from '../components/Navbar';
 import dayjs from 'dayjs';
 
 const { Content } = Layout;
