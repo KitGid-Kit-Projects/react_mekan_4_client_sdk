@@ -2,22 +2,10 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Input, Button, Card } from 'antd';
 import { MailOutlined, ArrowLeftOutlined } from '@ant-design/icons';
+import useForgot from '@/hooks/useForgot';
 
 const ForgotPassword = () => {
-  const [loading, setLoading] = useState(false);
-  const [emailSent, setEmailSent] = useState(false);
-
-
-  const onFinish = async (values: { email: string }) => {
-    setLoading(true);
-    try {
-      setEmailSent(true);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+const {loading, setLoading,emailSent, setEmailSent,onFinish}=useForgot()
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-muted">

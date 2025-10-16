@@ -2,36 +2,12 @@ import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Form, Input, Button, Card, Divider } from 'antd';
 import { GoogleOutlined, MailOutlined, LockOutlined, UserOutlined } from '@ant-design/icons';
+import useRegister from '@/hooks/useRegister';
+import RegisterForm from '@/components/RegisterForm';
 
 const Register = () => {
-  const [loading, setLoading] = useState(false);
 
-  const navigate = useNavigate();
-
- 
-
-  const onFinish = async (values: { email: string; password: string; displayName: string }) => {
-    setLoading(true);
-    try {
-      navigate('/dashboard');
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleGoogleLogin = async () => {
-    setLoading(true);
-    try {
-      navigate('/dashboard');
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
+const {loading, setLoading,onFinish,handleGoogleLogin}=useRegister()
   return (
     <div className="flex items-center justify-center min-h-screen bg-muted">
       <Card className="w-full max-w-md shadow-lg">
@@ -40,81 +16,7 @@ const Register = () => {
           <p className="text-muted-foreground">Sign up to get started</p>
         </div>
 
-        <Form
-          name="register"
-          onFinish={onFinish}
-          layout="vertical"
-          size="large"
-        >
-          <Form.Item
-            name="displayName"
-            rules={[{ required: true, message: 'Please enter your name' }]}
-          >
-            <Input 
-              prefix={<UserOutlined />} 
-              placeholder="Full Name" 
-            />
-          </Form.Item>
-
-          <Form.Item
-            name="email"
-            rules={[
-              { required: true, message: 'Please enter your email' },
-              { type: 'email', message: 'Please enter a valid email' }
-            ]}
-          >
-            <Input 
-              prefix={<MailOutlined />} 
-              placeholder="Email" 
-            />
-          </Form.Item>
-
-          <Form.Item
-            name="password"
-            rules={[
-              { required: true, message: 'Please enter your password' },
-              { min: 6, message: 'Password must be at least 6 characters' }
-            ]}
-          >
-            <Input.Password 
-              prefix={<LockOutlined />} 
-              placeholder="Password" 
-            />
-          </Form.Item>
-
-          <Form.Item
-            name="confirmPassword"
-            dependencies={['password']}
-            rules={[
-              { required: true, message: 'Please confirm your password' },
-              ({ getFieldValue }) => ({
-                validator(_, value) {
-                  if (!value || getFieldValue('password') === value) {
-                    return Promise.resolve();
-                  }
-                  return Promise.reject(new Error('Passwords do not match'));
-                },
-              }),
-            ]}
-          >
-            <Input.Password 
-              prefix={<LockOutlined />} 
-              placeholder="Confirm Password" 
-            />
-          </Form.Item>
-
-          <Form.Item>
-            <Button 
-              type="primary" 
-              htmlType="submit" 
-              loading={loading} 
-              block
-              size="large"
-            >
-              Sign Up
-            </Button>
-          </Form.Item>
-        </Form>
+   <RegisterForm onFinish={onFinish} loading={loading}/>
 
         <Divider>Or</Divider>
 

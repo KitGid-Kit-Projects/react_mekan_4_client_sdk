@@ -1,36 +1,11 @@
-import { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-
-import { Form, Input, Button, Card, Divider, Space } from 'antd';
-import { GoogleOutlined, MailOutlined, LockOutlined } from '@ant-design/icons';
+import {  Link } from 'react-router-dom';
+import { Button, Card, Divider } from 'antd';
+import { GoogleOutlined} from '@ant-design/icons';
+import useLogin from '@/hooks/useLogin';
+import LoginForm from '@/components/LoginForm';
 
 const Login = () => {
-  const [loading, setLoading] = useState(false);
-
-  const navigate = useNavigate();
-
-  const onFinish = async (values: { email: string; password: string }) => {
-    setLoading(true);
-    try {
-      navigate('/dashboard');
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleGoogleLogin = async () => {
-    setLoading(true);
-    try {
-      navigate('/dashboard');
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
+const {loading,onFinish,handleGoogleLogin }=useLogin()
   return (
     <div className="flex items-center justify-center min-h-screen bg-muted">
       <Card className="w-full max-w-md shadow-lg">
@@ -38,55 +13,7 @@ const Login = () => {
           <h1 className="text-3xl font-bold text-foreground mb-2">Welcome Back</h1>
           <p className="text-muted-foreground">Sign in to your account</p>
         </div>
-
-        <Form
-          name="login"
-          onFinish={onFinish}
-          layout="vertical"
-          size="large"
-        >
-          <Form.Item
-            name="email"
-            rules={[
-              { required: true, message: 'Please enter your email' },
-              { type: 'email', message: 'Please enter a valid email' }
-            ]}
-          >
-            <Input 
-              prefix={<MailOutlined />} 
-              placeholder="Email" 
-            />
-          </Form.Item>
-
-          <Form.Item
-            name="password"
-            rules={[{ required: true, message: 'Please enter your password' }]}
-          >
-            <Input.Password 
-              prefix={<LockOutlined />} 
-              placeholder="Password" 
-            />
-          </Form.Item>
-
-          <div className="text-right mb-4">
-            <Link to="/forgot-password" className="text-primary hover:text-accent">
-              Forgot password?
-            </Link>
-          </div>
-
-          <Form.Item>
-            <Button 
-              type="primary" 
-              htmlType="submit" 
-              loading={loading} 
-              block
-              size="large"
-            >
-              Sign In
-            </Button>
-          </Form.Item>
-        </Form>
-
+    <LoginForm onFinish={onFinish} loading={loading}/>
         <Divider>Or</Divider>
 
         <Button 
