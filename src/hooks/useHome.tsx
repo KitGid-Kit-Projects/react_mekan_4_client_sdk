@@ -1,19 +1,33 @@
+// Import custom authentication hook
 import { useAuth } from "@/context/AuthContext";
+
+// Import useNavigate hook from React Router for navigation
 import { useNavigate } from "react-router-dom";
-import { 
-  RocketOutlined, 
-  SafetyOutlined, 
+
+// Import Ant Design icons for feature display
+import {
+  RocketOutlined,
+  SafetyOutlined,
   ThunderboltOutlined,
-  CloudOutlined 
+  CloudOutlined
 } from '@ant-design/icons';
-const useHome=()=>{
- const { user } = useAuth();
+
+// Define custom hook for Home page
+const useHome = () => {
+  // Get current user from authentication context
+  const { user } = useAuth();
+
+  // Get navigate function for programmatic routing
   const navigate = useNavigate();
 
+  // Array of features to display on Home page
   const features = [
     {
+      // Icon for feature
       icon: <SafetyOutlined className="text-5xl text-primary" />,
+      // Feature title
       title: 'Secure Authentication',
+      // Feature description
       description: 'Email/password and Google sign-in with Firebase Auth'
     },
     {
@@ -32,7 +46,10 @@ const useHome=()=>{
       description: 'Vite, TypeScript, and latest web technologies'
     }
   ];
-  return {user,navigate,features }
+
+  // Return user, navigate function, and features array
+  return { user, navigate, features }
 }
 
-export default useHome
+// Export custom hook for use in other components
+export default useHome;
