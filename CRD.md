@@ -2,7 +2,7 @@
 
 | No | Tree                                      | Code Line Count | Path                                         |
 |----|-------------------------------------------|-----------------|----------------------------------------------|
-| 1  | App.tsx                                   | 48              | ./src/App.tsx                                |
+| 1  | App.tsx                                   | 39              | ./src/App.tsx                                |
 | 2  |    |──AuthContext                         | 120             | ./src/context/AuthContext.tsx                |
 | 3  |           └── firebase                    | 34              | ./src/firebase.js                            |
 | 4  |                  └── .env                 | 9               | ./.env                                       |
@@ -33,4 +33,4 @@
 | 29 | │   └── useUserList                       | 132             | ./src/hooks/useUserList.tsx                  |
 | 30 | └── NotFoundPage                          | 22              | ./src/pages/NotFound.tsx                     |
 ---|---------------------------------------------|-----------------|----------------------------------------------|
-| TOTAL CODE LINES                               | 1803            |                                              |
+| TOTAL CODE LINES                               | 1791            |                                              |
