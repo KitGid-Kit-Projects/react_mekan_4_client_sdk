@@ -21,4 +21,4 @@
 | 19   | │   │   ├── useForgotPassword                   |                   | 25                | ./src/hooks/useForgotPassword.ts         |
 | 20   | │   ├── NotFoundPage                            | 22                | 22                | ./src/pages/NotFound.tsx                 |
 | ---- | ----------------------------------------------- | ---------------   | ---------------   | -----------------------------            |
-|      | TOTAL CODE LINES                                | 239               | 863               |                                          |
+|      | TOTAL CODE LINES                                | 234               | 863               |                                          |
