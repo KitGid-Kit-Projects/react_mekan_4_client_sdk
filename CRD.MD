@@ -1,6 +1,6 @@
 No | Tree                                      | Code Line Count | Path                                         |
 ---|-------------------------------------------|-----------------|----------------------------------------------|
-1  | App.tsx                                   | 48              | ./src/App.tsx                                |    
+1  | App.tsx                                   | 29              | ./src/App.tsx                                |    
 2  |    |──AuthContext                         | 120             | ./src/context/AuthContext.tsx                |
 3  |           └── firebase                    | 34              | ./src/firebase.js                            |
 4  |                  └── .env                 | 9               | ./.env                                       |
@@ -21,4 +21,4 @@ No | Tree                                      | Code Line Count | Path         
 20 | │   └── useForgotPassword                 | 25              | ./src/hooks/useForgotPassword.ts             |
 21 | └── NotFoundPage                          | 22              | ./src/pages/NotFound.tsx                     |
 ---|-------------------------------------------|-----------------|-----------------------------------------------
-TOTAL CODE LINES                               | 872             |
+TOTAL CODE LINES                               | 863             |
