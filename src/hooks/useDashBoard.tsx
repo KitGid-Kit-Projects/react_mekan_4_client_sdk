@@ -1,22 +1,30 @@
+// Import custom authentication hook to get user profile
 import { useAuth } from "@/context/AuthContext";
+// Import navigation hook from react-router-dom
 import { useNavigate } from "react-router-dom";
+// Import icons for quick action cards
 import { 
   UserAddOutlined, 
   TeamOutlined, 
   UserOutlined
 } from '@ant-design/icons';
-const useDashBoard=()=>{
 
+// Custom hook for dashboard logic
+const useDashBoard = () => {
+
+  // Get current user's profile from AuthContext
   const { userProfile } = useAuth();
+  // Hook for programmatically navigating between routes
   const navigate = useNavigate();
 
+  // Define quick actions to display on the dashboard
   const quickActions = [
     {
-      title: 'Add User',
-      description: 'Create a new user profile',
-      icon: <UserAddOutlined className="text-4xl text-primary" />,
-      path: '/users/add',
-      color: '#1890ff'
+      title: 'Add User', // Action title
+      description: 'Create a new user profile', // Action description
+      icon: <UserAddOutlined className="text-4xl text-primary" />, // Icon for action
+      path: '/users/add', // Route to navigate on click
+      color: '#1890ff' // Optional color for styling
     },
     {
       title: 'View Users',
@@ -33,7 +41,10 @@ const useDashBoard=()=>{
       color: '#faad14'
     }
   ];
-  return{userProfile,navigate,quickActions}
+
+  // Return values needed in the dashboard component
+  return { userProfile, navigate, quickActions };
 }
 
-export default useDashBoard
+// Export hook for use in dashboard components
+export default useDashBoard;
