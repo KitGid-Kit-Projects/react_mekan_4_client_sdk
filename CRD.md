@@ -40,4 +40,4 @@
 | 36 | ├── Index                                 | 9               | ./src/pages/Index.tsx                        |
 | 37 | └── NotFoundPage                          | 22              | ./src/pages/NotFound.tsx                     |
 ---|---------------------------------------------|-----------------|----------------------------------------------|
-| TOTAL CODE LINES                               | 2,901           |                                              |
+| TOTAL CODE LINES                               | 2,223           |                                              |
