@@ -6,9 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Importing pages for routing
 import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import ForgotPassword from "./pages/ForgotPassword";
 import NotFound from "./pages/NotFound";
 
 // Create a new React Query client instance
@@ -28,14 +25,6 @@ const App = () => (
         {/* Home page route */}
         <Route path="/" element={<Home />} />
 
-        {/* Login page route */}
-        <Route path="/login" element={<Login />} />
-
-        {/* Register page route */}
-        <Route path="/register" element={<Register />} />
-
-        {/* Forgot Password page route */}
-        <Route path="/forgot-password" element={<ForgotPassword />} />
 
         {/* Catch-all route for non-existent paths; displays 404 page */}
         <Route path="*" element={<NotFound />} />
