@@ -9,7 +9,6 @@ import ForgotPassword from "./pages/ForgotPassword";
 import Dashboard from "./pages/Dashboard";
 import UserList from "./pages/UserList";
 import AddUser from "./pages/AddUser";
-import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
@@ -45,7 +44,6 @@ const App = () => (
           
     
           
-          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
