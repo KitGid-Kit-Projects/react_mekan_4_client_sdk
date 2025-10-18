@@ -19,6 +19,5 @@
 | 17   | │   ├── ForgotPassword                          |                   | 44                | ./src/pages/ForgotPassword.tsx           |
 | 18   | │   │   ├── ForgotPasswordEmail                 |                   | 49                | ./src/components/ForgotPasswordEmail.tsx |
 | 19   | │   │   ├── useForgotPassword                   |                   | 25                | ./src/hooks/useForgotPassword.ts         |
-| 20   | │   ├── NotFoundPage                            |                   | 22                | ./src/pages/NotFound.tsx                 |
 | ---- | ----------------------------------------------- | ---------------   | ---------------   | -----------------------------            |
-|      | TOTAL CODE LINES                                | 212               | 863               |                                          |
+|      | TOTAL CODE LINES                                | 212               | 841               |                                          |
