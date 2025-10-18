@@ -6,7 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Importing pages for routing
 import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
 
 // Create a new React Query client instance
 // This is used to manage queries, caching, and background fetching
@@ -24,10 +23,6 @@ const App = () => (
       <Routes>
         {/* Home page route */}
         <Route path="/" element={<Home />} />
-
-
-        {/* Catch-all route for non-existent paths; displays 404 page */}
-        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   </QueryClientProvider>

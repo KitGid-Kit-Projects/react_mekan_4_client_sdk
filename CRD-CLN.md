@@ -8,6 +8,5 @@
 | 06   | │   ├── Home                  | 17                | ./src/pages/Home.tsx             |
 | 07   | │   │   ├── HomeContent       | 53                | ./src/components/HomeContent.tsx |
 | 08   | │   │   ├── useHome           | 28                | ./src/hooks/useHome.ts           |
-| 09   | │   ├── NotFoundPage          | 22                | ./src/pages/NotFound.tsx         |
 | ---- | ----------------------------- | ---------------   | -----------------------------    |
-|      | TOTAL CODE LINES              | 234               |                                  |
+|      | TOTAL CODE LINES              | 212               |                                  |

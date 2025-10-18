@@ -1,51 +1,63 @@
-// Importing useNavigate hook from React Router for page navigation
+// Importing the useNavigate hook from React Router
+// This hook allows programmatic page navigation (redirects without <Link>)
 import { useNavigate } from "react-router-dom";
 
-// Importing Ant Design icons used in the feature cards
-import { 
-  RocketOutlined,      // Represents speed or modern tech
-  SafetyOutlined,      // Represents security or protection
-  ThunderboltOutlined, // Represents performance and power
-  CloudOutlined        // Represents cloud storage or database
-} from '@ant-design/icons';
+// Importing Ant Design icons to visually represent feature cards
+// Each imported icon is actually a React component
+import { RocketOutlined, SafetyOutlined, ThunderboltOutlined, CloudOutlined } from '@ant-design/icons';
+
+// Importing only the `ComponentType` type from React
+// "type" keyword is required here because `verbatimModuleSyntax` is enabled in tsconfig
+import type { ComponentType } from 'react'; 
+
+// Defining a TypeScript interface for each feature item on the home page
+// - icon: React component reference (not a JSX element)
+// - title: short heading for the feature
+// - description: text describing what the feature does
+interface Feature {
+  icon: ComponentType; 
+  title: string;
+  description: string;
+}
 
 // Defining the custom hook: useHome
-// This hook provides navigation functionality and a list of home page features
+// This hook encapsulates both navigation and feature data
 const useHome = () => {
-  // useNavigate hook allows programmatic navigation between routes
+  // Initialize navigate to handle programmatic routing
   const navigate = useNavigate();
 
-  // Array of feature objects displayed on the Home page
-  // Each object includes an icon, title, and description
-  const features = [
+  // Define an array of home page features
+  // Each object follows the Feature interface defined above
+  const features: Feature[] = [
     {
-      // Icon for the feature (Ant Design icon with styling)
-      icon: <SafetyOutlined className="text-5xl text-primary" />,
-      // Title of the feature
+      // Assign the SafetyOutlined icon component to the icon field
+      icon: SafetyOutlined,
+      // Short title for the feature
       title: 'Secure Authentication',
-      // Short description of the feature
+      // Feature description
       description: 'Email/password and Google sign-in with Firebase Auth'
     },
     {
-      icon: <CloudOutlined className="text-5xl text-primary" />,
+      icon: CloudOutlined,
       title: 'Cloud Firestore',
       description: 'Real-time database with automatic sync and offline support'
     },
     {
-      icon: <ThunderboltOutlined className="text-5xl text-primary" />,
+      icon: ThunderboltOutlined,
       title: 'Fast & Responsive',
       description: 'Built with React and Ant Design for optimal performance'
     },
     {
-      icon: <RocketOutlined className="text-5xl text-primary" />,
+      icon: RocketOutlined,
       title: 'Modern Stack',
       description: 'Vite, TypeScript, and latest web technologies'
     }
   ];
 
-  // Returning both navigate (for routing) and features (for UI display)
+  // Return both navigate (for routing) and features (for UI display)
+  // Other components like HomeContent can import and use these
   return { navigate, features };
 };
 
-// Exporting the custom hook for use in other components (like HomeContent)
+// Exporting the custom hook so it can be used in other components
 export default useHome;
