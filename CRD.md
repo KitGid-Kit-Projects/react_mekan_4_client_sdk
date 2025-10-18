@@ -19,6 +19,5 @@ No | Tree                                      | Code Line Count | Path         
 18 | ├── ForgotPassword                        | 44              | ./src/pages/ForgotPassword.tsx               |
 19 | │   ├── ForgotPassWordEmail               | 49              | ./src/components/ForgotPassWordEmail.tsx     |
 20 | │   └── useForgotPassword                 | 25              | ./src/hooks/useForgotPassword.ts             |
-21 | └── NotFoundPage                          | 22              | ./src/pages/NotFound.tsx                     |
 ---|-------------------------------------------|-----------------|-----------------------------------------------
-TOTAL CODE LINES                               | 863             |
+TOTAL CODE LINES                               | 841             |
