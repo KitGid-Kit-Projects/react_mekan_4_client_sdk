@@ -6,16 +6,12 @@ import { useNavigate } from "react-router-dom";
 // Each imported icon is actually a React component
 import { RocketOutlined, SafetyOutlined, ThunderboltOutlined, CloudOutlined } from '@ant-design/icons';
 
-// Importing only the `ComponentType` type from React
-// "type" keyword is required here because `verbatimModuleSyntax` is enabled in tsconfig
-import type { ComponentType } from 'react'; 
-
 // Defining a TypeScript interface for each feature item on the home page
 // - icon: React component reference (not a JSX element)
 // - title: short heading for the feature
 // - description: text describing what the feature does
 interface Feature {
-  icon: ComponentType; 
+  icon: any; 
   title: string;
   description: string;
 }
@@ -30,25 +26,22 @@ const useHome = () => {
   // Each object follows the Feature interface defined above
   const features: Feature[] = [
     {
-      // Assign the SafetyOutlined icon component to the icon field
-      icon: SafetyOutlined,
-      // Short title for the feature
+      icon: <SafetyOutlined className="text-5xl text-primary" />,
       title: 'Secure Authentication',
-      // Feature description
       description: 'Email/password and Google sign-in with Firebase Auth'
     },
     {
-      icon: CloudOutlined,
+      icon: <CloudOutlined className="text-5xl text-primary" />,
       title: 'Cloud Firestore',
       description: 'Real-time database with automatic sync and offline support'
     },
     {
-      icon: ThunderboltOutlined,
+      icon: <ThunderboltOutlined className="text-5xl text-primary" />,
       title: 'Fast & Responsive',
       description: 'Built with React and Ant Design for optimal performance'
     },
     {
-      icon: RocketOutlined,
+      icon: <RocketOutlined className="text-5xl text-primary" />,
       title: 'Modern Stack',
       description: 'Vite, TypeScript, and latest web technologies'
     }
