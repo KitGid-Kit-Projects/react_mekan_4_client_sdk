@@ -31,6 +31,5 @@
 | 27 | │   └── ColumnsUserList                   | 73              | ./src/hooks/ColumnsUserList.tsx              |
 | 28 | ├── UserList                              | 95              | ./src/pages/UserList.tsx                     |
 | 29 | │   └── useUserList                       | 132             | ./src/hooks/useUserList.tsx                  |
-| 30 | └── NotFoundPage                          | 22              | ./src/pages/NotFound.tsx                     |
 ---|---------------------------------------------|-----------------|----------------------------------------------|
-| TOTAL CODE LINES                               | 1791            |                                              |
+| TOTAL CODE LINES                               | 1769            |                                              |
