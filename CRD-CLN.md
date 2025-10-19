@@ -10,14 +10,13 @@
 | 08   | │   ├── Home                                    | 17                | 35                | ./src/pages/Home.tsx                     |
 | 09   | │   │   ├── HomeContent                         | 53                | 53                | ./src/components/HomeContent.tsx         |
 | 10   | │   │   ├── useHome                             | 28                | 28                | ./src/hooks/useHome.ts                   |
-| 11   | │   │   ├── useHomeContent                      |                   | 24                | ./src/hooks/useHomeContent.ts            |
-| 12   | │   ├── Login                                   |                   | 64                | ./src/pages/Login.tsx                    |
-| 13   | │   │   ├── useLogin                            |                   | 45                | ./src/hooks/useLogin.ts                  |
-| 14   | │   ├── Register                                |                   | 46                | ./src/pages/Register.tsx                 |
-| 15   | │   │   ├── RegisterForm                        |                   | 52                | ./src/components/RegisterForm.tsx        |
-| 16   | │   │   ├── useRegister                         |                   | 43                | ./src/hooks/useRegister.ts               |
-| 17   | │   ├── ForgotPassword                          |                   | 44                | ./src/pages/ForgotPassword.tsx           |
-| 18   | │   │   ├── ForgotPasswordEmail                 |                   | 49                | ./src/components/ForgotPasswordEmail.tsx |
-| 19   | │   │   ├── useForgotPassword                   |                   | 25                | ./src/hooks/useForgotPassword.ts         |
+| 11   | │   ├── Login                                   |                   | 64                | ./src/pages/Login.tsx                    |
+| 12   | │   │   ├── useLogin                            |                   | 45                | ./src/hooks/useLogin.ts                  |
+| 13   | │   ├── Register                                |                   | 46                | ./src/pages/Register.tsx                 |
+| 14   | │   │   ├── RegisterForm                        |                   | 52                | ./src/components/RegisterForm.tsx        |
+| 15   | │   │   ├── useRegister                         |                   | 43                | ./src/hooks/useRegister.ts               |
+| 16   | │   ├── ForgotPassword                          |                   | 44                | ./src/pages/ForgotPassword.tsx           |
+| 17   | │   │   ├── ForgotPasswordEmail                 |                   | 49                | ./src/components/ForgotPasswordEmail.tsx |
+| 18   | │   │   ├── useForgotPassword                   |                   | 25                | ./src/hooks/useForgotPassword.ts         |
 | ---- | ----------------------------------------------- | ---------------   | ---------------   | -----------------------------            |
-|      | TOTAL CODE LINES                                | 212               | 841               |                                          |
+|      | TOTAL CODE LINES                                | 212               | 817               |                                          |
