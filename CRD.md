@@ -12,7 +12,6 @@
 | 8  | ├── Home                                  | 35              | ./src/pages/Home.tsx                         |
 | 9  | │   ├── HomeContent                       | 93              | ./src/components/HomeContent.tsx             |
 | 10 | │   ├── useHome                           | 51              | ./src/hooks/useHome.ts                       |
-| 11 | │   └── useHomeContent                    | 24              | ./src/hooks/useHomeContent.ts                |
 | 12 | ├── Login                                 | 64              | ./src/pages/Login.tsx                        |
 | 13 | │   ├── LoginForm                         | 79              | ./src/components/LoginForm.tsx               |
 | 14 | │   └── useLogin                          | 65              | ./src/hooks/useLogin.ts                      |
@@ -32,4 +31,4 @@
 | 28 | ├── UserList                              | 95              | ./src/pages/UserList.tsx                     |
 | 29 | │   └── useUserList                       | 132             | ./src/hooks/useUserList.tsx                  |
 ---|---------------------------------------------|-----------------|----------------------------------------------|
-| TOTAL CODE LINES                               | 1769            |                                              |
+| TOTAL CODE LINES                               | 1745            |                                              |
