@@ -10,24 +10,23 @@
 | 08   | │   ├── Home                                    | 17                | 35                | 35                | ./src/pages/Home.tsx                     |
 | 09   | │   │   ├── HomeContent                         | 53                | 53                | 93                | ./src/components/HomeContent.tsx         |
 | 10   | │   │   ├── useHome                             | 28                | 28                | 51                | ./src/hooks/useHome.ts                   |
-| 11   | │   │   ├── useHomeContent                      |                   | 24                | 24                | ./src/hooks/useHomeContent.ts            |
-| 12   | │   ├── Login                                   |                   | 64                | 64                | ./src/pages/Login.tsx                    |
-| 13   | │   │   ├── LoginForm                           |                   |                   | 79                | ./src/components/LoginForm.tsx           |
-| 14   | │   │   ├── useLogin                            |                   | 45                | 65                | ./src/hooks/useLogin.ts                  |
-| 15   | │   ├── Register                                |                   | 46                | 71                | ./src/pages/Register.tsx                 |
-| 16   | │   │   ├── RegisterForm                        |                   | 52                | 108               | ./src/components/RegisterForm.tsx        |
-| 17   | │   │   ├── useRegister                         |                   | 43                | 66                | ./src/hooks/useRegister.ts               |
-| 18   | │   ├── ForgotPassword                          |                   | 44                | 73                | ./src/pages/ForgotPassword.tsx           |
-| 19   | │   │   ├── ForgotPasswordEmail                 |                   | 49                | 68                | ./src/components/ForgotPasswordEmail.tsx |
-| 20   | │   │   ├── useForgotPassword                   |                   | 25                | 55                | ./src/hooks/useForgotPassword.ts         |
-| 21   | │   ├── Dashboard                               |                   |                   | 73                | ./src/pages/Dashboard.tsx                |
-| 22   | │   │   ├── DashboardContent                    |                   |                   | 68                | ./src/components/DashboardContent.tsx    |
-| 23   | │   │   ├── useDashboard                        |                   |                   | 38                | ./src/hooks/useDashboard.ts              |
-| 24   | │   ├── AddUser                                 |                   |                   | 73                | ./src/pages/AddUser.tsx                  |
-| 25   | │   │   ├── AddUserContent                      |                   |                   | 62                | ./src/components/AddUserContent.tsx      |
-| 26   | │   │   ├── useAddUser                          |                   |                   | 46                | ./src/hooks/useAddUser.ts                |
-| 27   | │   │   ├── ColumnsUserList                     |                   |                   | 73                | ./src/hooks/ColumnsUserList.tsx          |
-| 28   | │   ├── UserList                                |                   |                   | 95                | ./src/pages/UserList.tsx                 |
-| 29   | │   │   ├── useUserList                         |                   |                   | 132               | ./src/hooks/useUserList.ts               |
+| 11   | │   ├── Login                                   |                   | 64                | 64                | ./src/pages/Login.tsx                    |
+| 12   | │   │   ├── LoginForm                           |                   |                   | 79                | ./src/components/LoginForm.tsx           |
+| 13   | │   │   ├── useLogin                            |                   | 45                | 65                | ./src/hooks/useLogin.ts                  |
+| 14   | │   ├── Register                                |                   | 46                | 71                | ./src/pages/Register.tsx                 |
+| 15   | │   │   ├── RegisterForm                        |                   | 52                | 108               | ./src/components/RegisterForm.tsx        |
+| 16   | │   │   ├── useRegister                         |                   | 43                | 66                | ./src/hooks/useRegister.ts               |
+| 17   | │   ├── ForgotPassword                          |                   | 44                | 73                | ./src/pages/ForgotPassword.tsx           |
+| 18   | │   │   ├── ForgotPasswordEmail                 |                   | 49                | 68                | ./src/components/ForgotPasswordEmail.tsx |
+| 19   | │   │   ├── useForgotPassword                   |                   | 25                | 55                | ./src/hooks/useForgotPassword.ts         |
+| 20   | │   ├── Dashboard                               |                   |                   | 73                | ./src/pages/Dashboard.tsx                |
+| 21   | │   │   ├── DashboardContent                    |                   |                   | 68                | ./src/components/DashboardContent.tsx    |
+| 22   | │   │   ├── useDashboard                        |                   |                   | 38                | ./src/hooks/useDashboard.ts              |
+| 23   | │   ├── AddUser                                 |                   |                   | 73                | ./src/pages/AddUser.tsx                  |
+| 24   | │   │   ├── AddUserContent                      |                   |                   | 62                | ./src/components/AddUserContent.tsx      |
+| 25   | │   │   ├── useAddUser                          |                   |                   | 46                | ./src/hooks/useAddUser.ts                |
+| 26   | │   │   ├── ColumnsUserList                     |                   |                   | 73                | ./src/hooks/ColumnsUserList.tsx          |
+| 27   | │   ├── UserList                                |                   |                   | 95                | ./src/pages/UserList.tsx                 |
+| 28   | │   │   ├── useUserList                         |                   |                   | 132               | ./src/hooks/useUserList.ts               |
 | ---- | ----------------------------------------------- | ---------------   | ---------------   | ---------------   | -----------------------------            |
-|      | TOTAL CODE LINES                                | 212               | 841               | 1769              |                                          |
+|      | TOTAL CODE LINES                                | 212               | 817               | 1745              |                                          |
