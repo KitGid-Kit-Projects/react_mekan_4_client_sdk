@@ -12,21 +12,21 @@
 | 10   | │   │   ├── useHome                             | 28                | 28                | 51                | ./src/hooks/useHome.ts                   |
 | 11   | │   ├── Login                                   |                   | 64                | 64                | ./src/pages/Login.tsx                    |
 | 12   | │   │   ├── LoginForm                           |                   |                   | 79                | ./src/components/LoginForm.tsx           |
-| 13   | │   │   ├── useLogin                            |                   | 45                | 65                | ./src/hooks/useLogin.ts                  |
+| 13   | │   │   ├── useLogin                            |                   | 45                | 65                | ./src/hooks/useLogin.tsx                 |
 | 14   | │   ├── Register                                |                   | 46                | 71                | ./src/pages/Register.tsx                 |
 | 15   | │   │   ├── RegisterForm                        |                   | 52                | 108               | ./src/components/RegisterForm.tsx        |
-| 16   | │   │   ├── useRegister                         |                   | 43                | 66                | ./src/hooks/useRegister.ts               |
+| 16   | │   │   ├── useRegister                         |                   | 43                | 66                | ./src/hooks/useRegister.tsx              |
 | 17   | │   ├── ForgotPassword                          |                   | 44                | 73                | ./src/pages/ForgotPassword.tsx           |
 | 18   | │   │   ├── ForgotPasswordEmail                 |                   | 49                | 68                | ./src/components/ForgotPasswordEmail.tsx |
-| 19   | │   │   ├── useForgotPassword                   |                   | 25                | 55                | ./src/hooks/useForgotPassword.ts         |
+| 19   | │   │   ├── useForgotPassword                   |                   | 25                | 55                | ./src/hooks/useForgotPassword.tsx        |
 | 20   | │   ├── Dashboard                               |                   |                   | 73                | ./src/pages/Dashboard.tsx                |
 | 21   | │   │   ├── DashboardContent                    |                   |                   | 68                | ./src/components/DashboardContent.tsx    |
-| 22   | │   │   ├── useDashboard                        |                   |                   | 38                | ./src/hooks/useDashboard.ts              |
+| 22   | │   │   ├── useDashboard                        |                   |                   | 38                | ./src/hooks/useDashboard.tsx             |
 | 23   | │   ├── AddUser                                 |                   |                   | 73                | ./src/pages/AddUser.tsx                  |
 | 24   | │   │   ├── AddUserContent                      |                   |                   | 62                | ./src/components/AddUserContent.tsx      |
 | 25   | │   │   ├── useAddUser                          |                   |                   | 46                | ./src/hooks/useAddUser.ts                |
 | 26   | │   │   ├── ColumnsUserList                     |                   |                   | 73                | ./src/hooks/ColumnsUserList.tsx          |
 | 27   | │   ├── UserList                                |                   |                   | 95                | ./src/pages/UserList.tsx                 |
-| 28   | │   │   ├── useUserList                         |                   |                   | 132               | ./src/hooks/useUserList.ts               |
+| 28   | │   │   ├── useUserList                         |                   |                   | 132               | ./src/hooks/useUserList.tsx              |
 | ---- | ----------------------------------------------- | ---------------   | ---------------   | ---------------   | -----------------------------            |
 |      | TOTAL CODE LINES                                | 212               | 817               | 1745              |                                          |

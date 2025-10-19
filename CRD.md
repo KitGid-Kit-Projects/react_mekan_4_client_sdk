@@ -21,10 +21,10 @@
 | 17 | │   └── useRegister                       | 66              | ./src/hooks/useRegister.ts                   |
 | 18 | ├── ForgotPassword                        | 103             | ./src/pages/ForgotPassword.tsx               |
 | 19 | │   ├── ForgotPassWordEmail               | 68              | ./src/components/ForgotPassWordEmail.tsx     |
-| 20 | │   └── useForgotPassword                 | 55              | ./src/hooks/useForgotPassword.ts             |
+| 20 | │   └── useForgotPassword                 | 55              | ./src/hooks/useForgotPassword.tsx            |
 | 21 | ├── Dashboard                             | 22              | ./src/pages/Dashboard.tsx                    |
 | 22 | │   ├── DashBoardContent                  | 68              | ./src/components/DashBoardContent.tsx        |
-| 23 | │   └── useDashBoard                      | 38              | ./src/hooks/useDashBoard.ts                  |
+| 23 | │   └── useDashBoard                      | 38              | ./src/hooks/useDashBoard.tsx                 |
 | 24 | ├── AddUser                               | 19              | ./src/pages/AddUser.tsx                      |
 | 25 | │   ├── AddUserContent                    | 62              | ./src/components/AddUserContent.tsx          |
 | 26 | │   ├── useAddUser                        | 46              | ./src/hooks/useAddUser.ts                    |
