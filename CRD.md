@@ -14,7 +14,7 @@ No | Tree                                      | Code Line Count | Path         
 12 | │   └── useLogin                          | 43              | ./src/hooks/useLogin.tsx                     |
 13 | ├── Register                              | 46              | ./src/pages/Register.tsx                     |
 14 | │   ├── RegisterForm                      | 52              | ./src/components/RegisterForm.tsx            |
-15 | │   └── useRegister                       | 43              | ./src/hooks/useRegister.ts                   |
+15 | │   └── useRegister                       | 43              | ./src/hooks/useRegister.tsx                  |
 16 | ├── ForgotPassword                        | 44              | ./src/pages/ForgotPassword.tsx               |
 17 | │   ├── ForgotPassWordEmail               | 49              | ./src/components/ForgotPassWordEmail.tsx     |
 18 | │   └── useForgotPassword                 | 25              | ./src/hooks/useForgotPassword.ts             |
