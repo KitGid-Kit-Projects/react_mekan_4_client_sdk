@@ -3,9 +3,9 @@ import { Layout, Spin } from 'antd';
 // Import custom navigation bar component
 import Navbar from '../components/Navbar';
 // Import custom hook for user edit functionality
-import useEditUser from '@/hooks/useEditUser';
+import useEditUser from '../hooks/useEditUser';
 // Import content component that renders the user edit form
-import EditUserContent from '@/components/EditUserContent';
+import EditUserContent from '../components/EditUserContent';
 
 // Extract Content component from Layout for convenience
 const { Content } = Layout;

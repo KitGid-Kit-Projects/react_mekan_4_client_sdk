@@ -16,7 +16,7 @@ import type { UploadFile } from 'antd';
 // Import Navbar for consistent top navigation
 import Navbar from '../components/Navbar';
 // Import custom hook for handling profile logic
-import userProfile from '@/hooks/useprofile';
+import userProfile from '../hooks/useProfile';
 // Import ProfileContent component to render the profile form and avatar
 import ProfileContent from '@/components/ProfileContent';
 
