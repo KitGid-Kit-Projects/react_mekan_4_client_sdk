@@ -36,7 +36,6 @@
 | 32   | │   ├── Profile                                 |                   |                   |                   | 43                | ./src/pages/Profile.tsx                  |
 | 33   | │   │   ├── ProfileContent                      |                   |                   |                   | 49                | ./src/components/ProfileContent.tsx      |
 | 34   | │   │   ├── useProfile                          |                   |                   |                   | 67                | ./src/hooks/useProfile.ts                |
-| 35   | │   ├── Index                                   |                   |                   |                   | 9                 | ./src/pages/Index.tsx                    |
-| 36   | │   ├── NotFoundPage                            |                   |                   |                   | 22                | ./src/pages/NotFound.tsx                 |
+| 35   | │   ├── NotFoundPage                            |                   |                   |                   | 22                | ./src/pages/NotFound.tsx                 |
 | ---- | ----------------------------------------------- | ---------------   | ---------------   | ---------------   | ---------------   | -----------------------------            |
-|      | TOTAL CODE LINES                                | 212               | 841               | 1769              | 2195              |                                          |
+|      | TOTAL CODE LINES                                | 212               | 841               | 1769              | 2,186              |                                          |
