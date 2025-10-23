@@ -5,12 +5,12 @@
 |----|--------------------------------------|------------------|---------------------------------------|
 | 1  | App.tsx                              | 17               | ./src/App.tsx                         |
 | 2  | ├── firebase                         | 25               | ./src/firebase.js                     |
-| 3  |     └── .env                         | 9                | ./.env                                |
+| 3  | |    └── .env                        | 9                | ./.env                                |
 | 4  | ├── Navbar                           | 63               | ./src/components/Navbar.tsx           |
 | 5  | └── (Outlet → Routed)                |                  |                                       |
-| 6  |     ├── Home                         | 17               | ./src/pages/Home.tsx                  |
-| 7  |     │   ├── HomeContent              | 53               | ./src/components/HomeContent.tsx      |
-| 8  |     │   └── useHome                  | 28               | ./src/hooks/useHome.ts                |
+| 6  |     └── Home                         | 17               | ./src/pages/Home.tsx                  |
+| 7  |         ├── HomeContent              | 53               | ./src/components/HomeContent.tsx      |
+| 8  |         └── useHome                  | 28               | ./src/hooks/useHome.ts                |
 |----|--------------------------------------|------------------|---------------------------------------|
 |    | TOTAL CODE LINES                     | 212              |                                       |
 |----|--------------------------------------|------------------|---------------------------------------|
