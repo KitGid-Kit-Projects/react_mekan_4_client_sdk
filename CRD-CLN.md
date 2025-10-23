@@ -8,13 +8,13 @@
 | 04   | ├── Navbar                                      | 63                | 92                | 92                | 92                | ./src/components/Navbar.tsx              |
 | 05   | ├── ProtectedRoute                              |                   | 41                | 41                | 41                | ./src/components/ProtectedRoute.tsx      |
 | 06   | ├── AuthContext                                 |                   | 120               | 120               | 120               | ./src/context/AuthContext.tsx            |
-| 07   | ├── (Outlet → Routed)                           |                   |                   |                   |                   |                                          |
-| 08   | │   ├── Home                                    | 17                | 35                | 35                | 35                | ./src/pages/Home.tsx                     |
-| 09   | │   │   ├── HomeContent                         | 53                | 53                | 93                | 93                | ./src/components/HomeContent.tsx         |
-| 10   | │   │   ├── useHome                             | 28                | 28                | 51                | 51                | ./src/hooks/useHome.ts                   |
+| 07   | └── (Outlet → Routed)                           |                   |                   |                   |                   |                                          |
+| 08   |     ├── Home                                    | 17                | 35                | 35                | 35                | ./src/pages/Home.tsx                     |
+| 09   |     │   ├── HomeContent                         | 53                | 53                | 93                | 93                | ./src/components/HomeContent.tsx         |
+| 10   |     │   └── useHome                             | 28                | 28                | 51                | 51                | ./src/hooks/useHome.ts                   |
 | 11   | │   ├── Login                                   |                   | 64                | 64                | 64                | ./src/pages/Login.tsx                    |
 | 12   | │   │   ├── LoginForm                           |                   |                   | 79                | 79                | ./src/components/LoginForm.tsx           |
-| 13   | │   │   ├── useLogin                            |                   | 45                | 65                | 65                | ./src/hooks/useLogin.ts                  |
+| 13   | │   │   └── useLogin                            |                   | 45                | 65                | 65                | ./src/hooks/useLogin.ts                  |
 | 14   | │   ├── Register                                |                   | 46                | 71                | 71                | ./src/pages/Register.tsx                 |
 | 15   | │   │   ├── RegisterForm                        |                   | 52                | 108               | 108               | ./src/components/RegisterForm.tsx        |
 | 16   | │   │   ├── useRegister                         |                   | 43                | 66                | 66                | ./src/hooks/useRegister.ts               |
@@ -37,5 +37,6 @@
 | 33   | │   │   ├── ProfileContent                      |                   |                   |                   | 49                | ./src/components/ProfileContent.tsx      |
 | 34   | │   │   ├── useProfile                          |                   |                   |                   | 67                | ./src/hooks/useProfile.ts                |
 | 35   | │   ├── NotFoundPage                            |                   |                   |                   | 22                | ./src/pages/NotFound.tsx                 |
-| ---- | ----------------------------------------------- | ---------------   | ---------------   | ---------------   | ---------------   | -----------------------------            |
-|      | TOTAL CODE LINES                                | 212               | 841               | 1769              | 2,186              |                                          |
+| ---- | ----------------------------------------------- | ------------------|-------------------|-------------------|-------------------|------------------------------------------|
+|      | TOTAL CODE LINES                                | 212               | 841               | 1769              | 2,186             |                                          |
+| ---- | ----------------------------------------------- | ------------------|-------------------|-------------------|-------------------|------------------------------------------|
