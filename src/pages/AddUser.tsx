@@ -1,12 +1,10 @@
 // Import UI components and utilities from Ant Design
-import { Layout, Card, Form, Input, Button, message, InputNumber } from 'antd';
-// Import icons for button visuals
-import { SaveOutlined, ArrowLeftOutlined } from '@ant-design/icons';
+import { Layout } from 'antd';
 // Import Navbar component for consistent layout
 import Navbar from '../components/Navbar';
-// Import custom hook to manage Add User logic (form handling, navigation, etc.)
+// Import custom hook to manage Add User logic
 import useAddUser from '@/hooks/useAddUser';
-// Import AddUserContent component that contains form fields and submit logic
+// Import AddUserContent component
 import AddUserContent from '@/components/AddUserContent';
 
 // Destructure Layout for cleaner usage
@@ -14,8 +12,8 @@ const { Content } = Layout;
 
 // Define the AddUser functional component
 const AddUser = () => {
-  // Use the custom hook to access user data, navigation, form, loading state, and submission handler
-  const { user, navigate, form, loading, setLoading, onFinish } = useAddUser();
+  // Use the custom hook to access form, loading state, and submission handler
+  const { form, loading, onFinish, onCancel } = useAddUser();
 
   // JSX structure for rendering the Add User page
   return (
@@ -25,9 +23,9 @@ const AddUser = () => {
 
       {/* Main Add User content: includes form and submission logic */}
       <AddUserContent
-        navigate={navigate}
         form={form}
         onFinish={onFinish}
+        onCancel={onCancel}
         loading={loading}
       />
     </Layout>
