@@ -28,13 +28,10 @@ const useUserList=()=>{
     // Exit early if no authenticated user
     if (!user) return;
 
-    // Determine if logged-in user is an admin
-    const isAdmin = userProfile?.role === 'admin';
+
 
     // Query Firestore: admin sees all users; non-admin sees only their data
-    const q = isAdmin 
-      ? query(collection(db, 'usersData'))
-      : query(collection(db, 'usersData'), where('uid', '==', user.uid));
+    const q = query(collection(db, 'usersData'));
 
     // Subscribe to live updates (real-time listener)
     const unsubscribe = onSnapshot(
