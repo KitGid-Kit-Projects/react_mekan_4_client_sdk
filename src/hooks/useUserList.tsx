@@ -41,9 +41,8 @@ const useUserList = () => {
 
     // Define Firestore query:
     // Admins see all users; non-admins see only their own data
-    const q = isAdmin
-      ? query(collection(db, 'usersData'))
-      : query(collection(db, 'usersData'), where('uid', '==', user.uid));
+    const q = 
+     query(collection(db, 'usersData'))
 
     // Subscribe to live updates using Firestore onSnapshot (real-time listener)
     const unsubscribe = onSnapshot(
