@@ -9,8 +9,8 @@ import {
   signInWithPopup
 } from 'firebase/auth';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
-import { auth, googleProvider, db } from '../firebase';
 import { message } from 'antd';
+import { auth, db, googleProvider } from '@/firebase';
 
 interface UserProfile {
   uid: string;
