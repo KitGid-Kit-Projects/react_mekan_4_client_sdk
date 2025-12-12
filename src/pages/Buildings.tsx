@@ -9,6 +9,7 @@ import {
   EyeOutlined 
 } from '@ant-design/icons';
 import { collection, addDoc, getDocs, updateDoc, deleteDoc, doc, query, where } from 'firebase/firestore';
+import { db } from '@/firebase';
 
 
 const { Content } = Layout;
