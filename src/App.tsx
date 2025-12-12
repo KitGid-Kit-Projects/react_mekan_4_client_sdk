@@ -12,6 +12,7 @@ import UserList from "./pages/UserList";
 import AddUser from "./pages/AddUser";
 import EditUser from "./pages/EditUser";
 import NotFound from "./pages/NotFound";
+import Buildings from "./pages/Buildings";
 
 const queryClient = new QueryClient();
 
@@ -52,6 +53,11 @@ const App = () => (
           <Route path="/users/edit/:id" element={
             <ProtectedRoute>
               <EditUser />
+            </ProtectedRoute>
+          } />
+            <Route path="/buildings" element={
+            <ProtectedRoute>
+              <Buildings />
             </ProtectedRoute>
           } />
           

@@ -6,7 +6,8 @@ import {
   UserOutlined, 
   TeamOutlined, 
   LogoutOutlined,
-  DashboardOutlined
+  DashboardOutlined,
+  ShopOutlined
 } from '@ant-design/icons';
 
 const { Header } = Layout;
@@ -35,7 +36,12 @@ const Navbar = () => {
       key: 'profile',
       icon: <UserOutlined />,
       label: <Link to="/profile">Profile</Link>
-    }
+    },
+    {
+  key: 'buildings',
+  icon: <ShopOutlined />, // or any other icon
+  label: <Link to="/buildings">Buildings</Link>
+}
   ] : [
     {
       key: 'home',
