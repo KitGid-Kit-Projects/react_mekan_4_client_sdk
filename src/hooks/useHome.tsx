@@ -1,33 +1,33 @@
-// Import custom authentication hook
-import { useAuth } from "@/context/AuthContext";
-
-// Import useNavigate hook from React Router for navigation
+// Importing the useNavigate hook from React Router
+// This hook allows programmatic page navigation (redirects without <Link>)
 import { useNavigate } from "react-router-dom";
 
-// Import Ant Design icons for feature display
-import {
-  RocketOutlined,
-  SafetyOutlined,
-  ThunderboltOutlined,
-  CloudOutlined
-} from '@ant-design/icons';
+// Importing Ant Design icons to visually represent feature cards
+// Each imported icon is actually a React component
+import { RocketOutlined, SafetyOutlined, ThunderboltOutlined, CloudOutlined } from '@ant-design/icons';
 
-// Define custom hook for Home page
+// Defining a TypeScript interface for each feature item on the home page
+// - icon: React component reference (not a JSX element)
+// - title: short heading for the feature
+// - description: text describing what the feature does
+interface Feature {
+  icon: any; 
+  title: string;
+  description: string;
+}
+
+// Defining the custom hook: useHome
+// This hook encapsulates both navigation and feature data
 const useHome = () => {
-  // Get current user from authentication context
-  const { user } = useAuth();
-
-  // Get navigate function for programmatic routing
+  // Initialize navigate to handle programmatic routing
   const navigate = useNavigate();
 
-  // Array of features to display on Home page
-  const features = [
+  // Define an array of home page features
+  // Each object follows the Feature interface defined above
+  const features: Feature[] = [
     {
-      // Icon for feature
       icon: <SafetyOutlined className="text-5xl text-primary" />,
-      // Feature title
       title: 'Secure Authentication',
-      // Feature description
       description: 'Email/password and Google sign-in with Firebase Auth'
     },
     {
@@ -47,9 +47,10 @@ const useHome = () => {
     }
   ];
 
-  // Return user, navigate function, and features array
-  return { user, navigate, features }
-}
+  // Return both navigate (for routing) and features (for UI display)
+  // Other components like HomeContent can import and use these
+  return { navigate, features };
+};
 
-// Export custom hook for use in other components
+// Exporting the custom hook so it can be used in other components
 export default useHome;

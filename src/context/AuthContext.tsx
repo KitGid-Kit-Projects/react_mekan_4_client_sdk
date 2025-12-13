@@ -1,7 +1,8 @@
 // Import necessary React and Firebase tools
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+import type { ReactNode } from 'react';
+import type { User} from 'firebase/auth';
 import { 
-  User, // Firebase User type
   onAuthStateChanged, // Listener for authentication state changes
   signInWithEmailAndPassword, // Email/password login
   createUserWithEmailAndPassword, // Email/password registration
@@ -10,7 +11,7 @@ import {
   signInWithPopup // Google login
 } from 'firebase/auth';
 import { doc, setDoc, getDoc } from 'firebase/firestore'; // Firestore document utilities
-import { auth, googleProvider, db } from '../firebase'; // Firebase config
+import { auth, googleProvider, db } from '../firebase.ts'; // Firebase config
 import { message } from 'antd'; // For showing messages (success/error)
 
 // Define the structure of user profile stored in Firestore

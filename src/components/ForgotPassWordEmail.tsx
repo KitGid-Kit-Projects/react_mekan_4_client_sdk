@@ -3,7 +3,7 @@ import { Button, Form, Input } from "antd"
 import { MailOutlined } from '@ant-design/icons'; // Mail icon for the email input field
 
 // Component definition — receives props for state and functions
-const ForgetPassWordEmail = ({ emailSent, onFinish, loading, setEmailSent }) => {
+const ForgetPassWordEmail = ({ emailSent, onFinish, loading, setEmailSent }: any) => {
 
   return (
     <>
@@ -65,4 +65,4 @@ const ForgetPassWordEmail = ({ emailSent, onFinish, loading, setEmailSent }) => 
 }
 
 // Export the component for use in other files
-export default ForgetPassWordEmail
+export default ForgetPassWordEmail;

@@ -21,4 +21,4 @@ const useForgotPassword=()=>{
     return {loading, setLoading,emailSent, setEmailSent,onFinish}
 }
 
-export default useForgotPassword
+export default useForgotPassword;

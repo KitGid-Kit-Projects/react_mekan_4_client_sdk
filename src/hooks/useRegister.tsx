@@ -44,4 +44,4 @@ const useRegister=()=>{
   return {loading, setLoading,onFinish,handleGoogleLogin}
 }
 
-export default useRegister
+export default useRegister;

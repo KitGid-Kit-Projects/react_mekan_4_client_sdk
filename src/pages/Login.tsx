@@ -1,15 +1,13 @@
 // Import necessary React hooks and libraries
-import { useState, useEffect } from 'react'; // useState for managing local state, useEffect for side effects
-import { useNavigate, Link } from 'react-router-dom'; // Navigation and linking for routing
-import { useAuth } from '../context/AuthContext'; // Custom authentication context providing login methods and user info
 import { Form, Input, Button, Card, Divider } from 'antd'; // Ant Design UI components
 import { GoogleOutlined, MailOutlined, LockOutlined } from '@ant-design/icons'; // Ant Design icons for styling inputs/buttons
+import { Link } from 'react-router-dom'; // Linking for routing
 import useLogin from '@/hooks/useLogin';
 
 // Define the Login component
 const Login = () => {
 const {
-    loading, setLoading,navigate,onFinish,handleGoogleLogin
+    loading,onFinish,handleGoogleLogin
 }=useLogin()
   // JSX: what gets rendered to the UI
   return (

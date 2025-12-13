@@ -5,7 +5,7 @@ import { Button, Card, Col, Layout, Row, Space } from "antd"
 const { Content } = Layout;
 
 // Defining HomeContent functional component, accepts user, navigate, and features as props
-const HomeContent=({user,navigate,features})=>{
+const HomeContent=({user,navigate,features}:any)=>{
 
     return (
         // Layout Content wrapper with background color
@@ -58,7 +58,7 @@ const HomeContent=({user,navigate,features})=>{
 
                 {/* Features grid section */}
                 <Row gutter={[32, 32]}>
-                    {features.map((feature, index) => (
+                    {features.map((feature: any, index: number) => (
                         <Col xs={24} sm={12} lg={6} key={index}>
                             {/* Individual feature card */}
                             <Card className="h-full text-center hover:shadow-lg transition-shadow">

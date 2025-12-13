@@ -5,7 +5,7 @@ import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Form, Input } from "antd";
 
 // Define RegisterForm functional component, receives onFinish callback and loading state as props
-const RegisterForm=({onFinish,loading})=>{
+const RegisterForm=({onFinish,loading}:any)=>{
 
     return(
         // Ant Design Form component with vertical layout and large size

@@ -4,7 +4,6 @@ import { Layout, Menu, Button, Avatar, Dropdown, Space } from 'antd';
 import { 
   HomeOutlined, 
   UserOutlined, 
-  TeamOutlined, 
   LogoutOutlined,
   DashboardOutlined
 } from '@ant-design/icons';
