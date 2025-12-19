@@ -6,7 +6,7 @@ const { Content } = Layout;
 
 // Defining the HomeContent functional component
 // It takes two props: navigate (for navigation) and features (an array of feature objects)
-const HomeContent = ({ navigate, features }) => {
+const HomeContent = ({ navigate, features }: any) => {
   return (
     // Ant Design Layout Content section with a background color class
     <Content className="bg-muted">
@@ -51,7 +51,7 @@ const HomeContent = ({ navigate, features }) => {
         {/* Features grid section */}
         <Row gutter={[32, 32]}>
           {/* Mapping through the features array and displaying each feature in a column */}
-          {features.map((feature, index) => (
+          {features.map((feature: any, index: number) => (
             <Col xs={24} sm={12} lg={6} key={index}>
               {/* Card for each feature with hover shadow animation */}
               <Card className="h-full text-center hover:shadow-lg transition-shadow">
