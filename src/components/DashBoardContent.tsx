@@ -1,84 +1,181 @@
-// Import Ant Design components for layout, cards, buttons, and statistics
 import { Button, Card, Col, Layout, Row, Statistic } from "antd";
-// Import icon for button
 import { PlusOutlined } from '@ant-design/icons';
 
-// Destructure Content component from Layout
 const { Content } = Layout;
 
-// Dashboard content component receives userProfile, quickActions, and navigate function as props
 const DashBoardContent = ({ userProfile, quickActions, navigate }) => {
+  // Inline styles
+  const styles = {
+    content: {
+      backgroundColor: '#f0f2f5',
+      minHeight: 'calc(100vh - 64px)',
+      padding: '24px'
+    },
+    container: {
+      maxWidth: '1200px',
+      margin: '0 auto'
+    },
+    welcomeSection: {
+      marginBottom: '32px'
+    },
+    welcomeTitle: {
+      fontSize: '36px',
+      fontWeight: 700,
+      color: '#262626',
+      marginBottom: '8px'
+    },
+    welcomeSubtitle: {
+      fontSize: '18px',
+      color: '#595959'
+    },
+    statsRow: {
+      marginBottom: '32px'
+    },
+    statCard: {
+      borderRadius: '8px'
+    },
+    statisticTitle: {
+      fontSize: '14px',
+      color: '#8c8c8c'
+    },
+    sectionTitle: {
+      fontSize: '24px',
+      fontWeight: 600,
+      color: '#262626',
+      marginBottom: '16px'
+    },
+    actionCard: {
+      height: '100%',
+      borderRadius: '8px',
+      cursor: 'pointer',
+      transition: 'all 0.3s',
+      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.06)'
+    },
+    actionCardHover: {
+      boxShadow: '0 8px 24px rgba(0, 0, 0, 0.12)',
+      transform: 'translateY(-4px)'
+    },
+    actionContent: {
+      textAlign: 'center',
+      padding: '20px'
+    },
+    actionIcon: {
+      marginBottom: '16px',
+      fontSize: '36px',
+      color: '#1890ff'
+    },
+    actionTitle: {
+      fontSize: '20px',
+      fontWeight: 600,
+      color: '#262626',
+      marginBottom: '8px'
+    },
+    actionDescription: {
+      color: '#595959',
+      marginBottom: '16px',
+      fontSize: '14px',
+      lineHeight: 1.5
+    },
+    actionButton: {
+      backgroundColor: '#1890ff',
+      borderColor: '#1890ff'
+    }
+  };
+
+  // Hover handler for action cards
+  const handleCardHover = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.currentTarget.style.boxShadow = styles.actionCardHover.boxShadow;
+    e.currentTarget.style.transform = styles.actionCardHover.transform;
+  };
+
+  const handleCardLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.currentTarget.style.boxShadow = styles.actionCard.boxShadow;
+    e.currentTarget.style.transform = 'none';
+  };
+
   return (
-    // Main content area with padding and background
-    <Content className="p-6 bg-muted">
-      <div className="max-w-7xl mx-auto">
-        {/* Welcome message */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-foreground mb-2">
+    <Content style={styles.content}>
+      <div style={styles.container}>
+        {/* Welcome Section */}
+        <div style={styles.welcomeSection}>
+          <h1 style={styles.welcomeTitle}>
             Welcome, {userProfile?.displayName}!
           </h1>
-          <p className="text-lg text-muted-foreground">
-            {/* Show admin or user dashboard label */}
+          <p style={styles.welcomeSubtitle}>
             {userProfile?.role === 'admin' ? 'Admin Dashboard' : 'User Dashboard'}
           </p>
         </div>
 
-        {/* Row for user statistics */}
-        <Row gutter={[24, 24]} className="mb-8">
-          {/* Role card */}
+        {/* Statistics Row */}
+        <Row gutter={[24, 24]} style={styles.statsRow}>
+          {/* Role Card */}
           <Col xs={24} sm={12} lg={8}>
-            <Card>
+            <Card style={styles.statCard}>
               <Statistic
                 title="Your Role"
                 value={userProfile?.role}
-                valueStyle={{ color: '#1890ff', textTransform: 'capitalize' }}
+                valueStyle={{ 
+                  color: '#1890ff', 
+                  textTransform: 'capitalize',
+                  fontSize: '24px'
+                }}
               />
             </Card>
           </Col>
 
-          {/* Account status card */}
+          {/* Account Status Card */}
           <Col xs={24} sm={12} lg={8}>
-            <Card>
+            <Card style={styles.statCard}>
               <Statistic 
                 title="Account Status" 
                 value="Active"
-                valueStyle={{ color: '#52c41a' }}
+                valueStyle={{ 
+                  color: '#52c41a',
+                  fontSize: '24px'
+                }}
               />
             </Card>
           </Col>
 
-          {/* Member since card */}
+          {/* Member Since Card */}
           <Col xs={24} sm={12} lg={8}>
-            <Card>
+            <Card style={styles.statCard}>
               <Statistic 
                 title="Member Since" 
                 value={new Date(userProfile?.createdAt || Date.now()).toLocaleDateString()}
+                valueStyle={{ fontSize: '24px' }}
               />
             </Card>
           </Col>
         </Row>
 
-        {/* Quick actions section */}
-        <h2 className="text-2xl font-bold text-foreground mb-4">Quick Actions</h2>
+        {/* Quick Actions Section */}
+        <h2 style={styles.sectionTitle}>Quick Actions</h2>
         <Row gutter={[24, 24]}>
-          {/* Map through quickActions and render cards */}
           {quickActions.map((action, index) => (
             <Col xs={24} sm={12} lg={8} key={index}>
               <Card 
-                hoverable
-                className="h-full"
-                onClick={() => navigate(action.path)} // Navigate to action path on click
+                style={styles.actionCard}
+                onMouseEnter={handleCardHover}
+                onMouseLeave={handleCardLeave}
+                onClick={() => navigate(action.path)}
               >
-                <div className="text-center">
-                  <div className="mb-4">{action.icon}</div> {/* Action icon */}
-                  <h3 className="text-xl font-semibold text-foreground mb-2">
-                    {action.title} {/* Action title */}
+                <div style={styles.actionContent}>
+                  <div style={styles.actionIcon}>
+                    {action.icon}
+                  </div>
+                  <h3 style={styles.actionTitle}>
+                    {action.title}
                   </h3>
-                  <p className="text-muted-foreground mb-4">
-                    {action.description} {/* Action description */}
+                  <p style={styles.actionDescription}>
+                    {action.description}
                   </p>
-                  <Button type="primary" icon={<PlusOutlined />}>
-                    Go {/* Button to trigger action */}
+                  <Button 
+                    type="primary" 
+                    icon={<PlusOutlined />}
+                    style={styles.actionButton}
+                  >
+                    Go
                   </Button>
                 </div>
               </Card>
@@ -90,5 +187,4 @@ const DashBoardContent = ({ userProfile, quickActions, navigate }) => {
   );
 };
 
-// Export the dashboard content component
 export default DashBoardContent;

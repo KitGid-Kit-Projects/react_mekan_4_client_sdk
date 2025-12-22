@@ -1,6 +1,4 @@
-// Import core UI components and layout elements from Ant Design
-import { Layout, Table, Button, Space, Popconfirm, message, Input, Card } from 'antd';
-// Import commonly used icons for UI actions (edit, delete, add, search, refresh)
+import { Layout, Table, Button, Space, Input, Card } from 'antd';
 import { 
   EditOutlined, 
   DeleteOutlined, 
@@ -8,75 +6,117 @@ import {
   SearchOutlined,
   ReloadOutlined
 } from '@ant-design/icons';
-// Import Navbar for consistent top navigation across all pages
 import Navbar from '../components/Navbar';
-
-// Import custom hook that manages user list logic (fetching, filtering, deleting, refreshing)
 import useUserList from '@/hooks/useUserList';
-// Import predefined column structure for the user table
 import columnsUserList from '@/hooks/columnsUserList';
 
-// Destructure Layout and Input for cleaner code
 const { Content } = Layout;
 const { Search } = Input;
 
-// Define the UserList functional component
 const UserList = () => {
-  // Destructure values and functions from the useUserList custom hook
   const {
-    user,                 // Current logged-in user
-    userProfile,          // User profile details (includes role)
-    users,                // Original list of all users
-    setUsers,             // Setter for updating user list
-    navigate,             // Navigation function for routing
-    filteredUsers,        // Filtered list after search
-    setFilteredUsers,     // Setter for updating filtered users
-    loading,              // Loading state for data fetching
-    setLoading,           // Setter for loading state
-    searchText,           // Current search text
-    setSearchText,        // Setter for search text
-    handleSearch,         // Function for handling search/filter
-    handleDelete,         // Function for deleting a user
-    handleRefresh         // Function for reloading data
+    user,
+    userProfile,
+    users,
+    setUsers,
+    navigate,
+    filteredUsers,
+    setFilteredUsers,
+    loading,
+    setLoading,
+    searchText,
+    setSearchText,
+    handleSearch,
+    handleDelete,
+    handleRefresh
   } = useUserList();
 
-  // JSX structure that defines the page layout and UI components
-  return (
-    <Layout className="min-h-screen">
-      {/* Top navigation bar */}
-      <Navbar />
+  // Inline styles
+  const styles = {
+    layout: {
+      minHeight: '100vh'
+    },
+    content: {
+      backgroundColor: '#f0f2f5',
+      padding: '24px'
+    },
+    container: {
+      maxWidth: '1200px',
+      margin: '0 auto'
+    },
+    card: {
+      borderRadius: '8px',
+      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.06)'
+    },
+    header: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginBottom: '24px',
+      flexWrap: 'wrap',
+      gap: '16px'
+    },
+    title: {
+      fontSize: '28px',
+      fontWeight: 700,
+      color: '#262626',
+      margin: 0
+    },
+    buttonGroup: {
+      display: 'flex',
+      gap: '12px'
+    },
+    refreshButton: {
+      borderColor: '#d9d9d9',
+      color: '#595959'
+    },
+    addButton: {
+      backgroundColor: '#1890ff',
+      borderColor: '#1890ff'
+    },
+    searchBar: {
+      marginBottom: '24px'
+    },
+    table: {
+      borderRadius: '8px',
+      overflow: 'hidden'
+    },
+    pagination: {
+      marginTop: '24px'
+    }
+  };
 
-      {/* Main content section with background and padding */}
-      <Content className="p-6 bg-muted">
-        <div className="max-w-7xl mx-auto">
-          <Card>
-            {/* Page header section with title and action buttons */}
-            <div className="flex justify-between items-center mb-6">
-              {/* Dynamic title based on user role */}
-              <h1 className="text-3xl font-bold text-foreground">
+  return (
+    <Layout style={styles.layout}>
+      <Navbar />
+      <Content style={styles.content}>
+        <div style={styles.container}>
+          <Card style={styles.card}>
+            {/* Page Header */}
+            <div style={styles.header}>
+              <h1 style={styles.title}>
                 {userProfile?.role === 'admin' ? 'All Users' : 'My Data'}
               </h1>
-              <Space>
-                {/* Button to refresh user data */}
+              <Space style={styles.buttonGroup}>
                 <Button 
                   icon={<ReloadOutlined />}
                   onClick={handleRefresh}
+                  style={styles.refreshButton}
                 >
                   Refresh
                 </Button>
-
-                {/* Button to navigate to Add User page */}
                 <Button 
                   type="primary" 
                   icon={<PlusOutlined />}
                   onClick={() => navigate('/users/add')}
+                  style={styles.addButton}
                 >
                   Add User
                 </Button>
               </Space>
             </div>
 
-            {/* Search bar for filtering users by name, email, or city */}
+            {/* Search Bar */}
             <Search
               placeholder="Search by name, email, or city"
               allowClear
@@ -84,19 +124,21 @@ const UserList = () => {
               size="large"
               onSearch={handleSearch}
               onChange={(e) => handleSearch(e.target.value)}
-              className="mb-6"
+              style={styles.searchBar}
             />
 
-            {/* Ant Design table displaying user data */}
+            {/* User Table */}
             <Table
-              columns={columnsUserList({ navigate, handleDelete })} // Column structure with actions
-              dataSource={filteredUsers}                            // Filtered list to be displayed
-              rowKey="id"                                           // Unique key for each row
-              loading={loading}                                     // Show spinner while loading
+              columns={columnsUserList({ navigate, handleDelete })}
+              dataSource={filteredUsers}
+              rowKey="id"
+              loading={loading}
+              style={styles.table}
               pagination={{
-                pageSize: 10,                                       // Default items per page
-                showSizeChanger: true,                              // Allow changing page size
-                showTotal: (total) => `Total ${total} users`        // Show total count in footer
+                pageSize: 10,
+                showSizeChanger: true,
+                showTotal: (total) => `Total ${total} users`,
+                style: styles.pagination
               }}
             />
           </Card>
@@ -106,5 +148,4 @@ const UserList = () => {
   );
 };
 
-// Export the UserList component for use in routing or imports
 export default UserList;
