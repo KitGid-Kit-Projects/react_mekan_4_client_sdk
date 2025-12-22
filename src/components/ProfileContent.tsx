@@ -1,101 +1,188 @@
-// Import necessary UI components from Ant Design
-import { Layout, Card, Form, Input, Button, Upload, Avatar, message, Spin } from 'antd';
-// Import commonly used icons from Ant Design
+import { Layout, Card, Form, Input, Button, Upload, Avatar } from 'antd';
 import { UserOutlined, UploadOutlined, SaveOutlined } from '@ant-design/icons';
 
-// Extract Content component from Layout for easier usage
 const { Content } = Layout;
 
-// Define the ProfileContent functional component
-// Receives all profile-related props such as data, file handling, form, and loading state
 const ProfileContent = ({ profileData, fileList, handleUpload, uploading, form, onFinish, user, loading }) => {
-  return (
-    <Content className="p-6 bg-muted">
-      {/* Container for centering and limiting the content width */}
-      <div className="max-w-2xl mx-auto">
-        {/* Page title */}
-        <h1 className="text-3xl font-bold text-foreground mb-6">My Profile</h1>
+  // Inline styles
+  const styles = {
+    content: {
+      backgroundColor: '#f0f2f5',
+      padding: '24px',
+      minHeight: 'calc(100vh - 64px)'
+    },
+    container: {
+      maxWidth: '800px',
+      margin: '0 auto'
+    },
+    title: {
+      fontSize: '28px',
+      fontWeight: 700,
+      color: '#262626',
+      marginBottom: '24px'
+    },
+    card: {
+      borderRadius: '8px',
+      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.06)',
+      marginBottom: '24px'
+    },
+    avatarSection: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      marginBottom: '24px'
+    },
+    avatar: {
+      marginBottom: '16px'
+    },
+    uploadButton: {
+      marginTop: '8px'
+    },
+    formItem: {
+      marginBottom: '20px'
+    },
+    label: {
+      fontWeight: 500,
+      color: '#262626',
+      fontSize: '14px',
+      marginBottom: '6px',
+      display: 'block'
+    },
+    input: {
+      height: '40px',
+      fontSize: '14px',
+      borderRadius: '6px',
+      border: '1px solid #d9d9d9'
+    },
+    disabledInput: {
+      backgroundColor: '#f5f5f5',
+      color: '#8c8c8c',
+      cursor: 'not-allowed'
+    },
+    submitButton: {
+      backgroundColor: '#1890ff',
+      borderColor: '#1890ff',
+      height: '48px',
+      fontSize: '16px',
+      fontWeight: 500,
+      width: '100%'
+    }
+  };
 
-        {/* Card container for user profile details */}
-        <Card className="mb-6">
-          {/* Avatar section for displaying and uploading profile image */}
-          <div className="flex flex-col items-center mb-6">
+  return (
+    <Content style={styles.content}>
+      <div style={styles.container}>
+        {/* Page Title */}
+        <h1 style={styles.title}>My Profile</h1>
+
+        {/* Profile Card */}
+        <Card style={styles.card}>
+          {/* Avatar Section */}
+          <div style={styles.avatarSection}>
             <Avatar 
-              size={120} // Avatar size in pixels
-              icon={<UserOutlined />} // Default icon if no image
-              src={profileData?.photoURL} // User's uploaded photo
-              className="mb-4" // Margin for spacing below avatar
+              size={120}
+              icon={<UserOutlined />}
+              src={profileData?.photoURL}
+              style={styles.avatar}
             />
-            {/* Upload button for profile photo */}
             <Upload
-              beforeUpload={handleUpload} // Custom function to handle upload
-              showUploadList={false} // Hide default upload file list
-              fileList={fileList} // Current file list (if any)
+              beforeUpload={handleUpload}
+              showUploadList={false}
+              fileList={fileList}
             >
               <Button 
-                icon={<UploadOutlined />} // Upload icon
-                loading={uploading}       // Loading spinner while uploading
+                icon={<UploadOutlined />}
+                loading={uploading}
+                style={styles.uploadButton}
               >
                 Upload Photo
               </Button>
             </Upload>
           </div>
 
-          {/* Form section for editing profile information */}
+          {/* Profile Form */}
           <Form
-            form={form}           // Ant Design form instance
-            layout="vertical"     // Vertical label alignment
-            onFinish={onFinish}   // Function to handle form submission
-            size="large"          // Larger form elements for better UX
+            form={form}
+            layout="vertical"
+            onFinish={onFinish}
+            size="large"
           >
-            {/* Display name input field */}
+            {/* Display Name */}
             <Form.Item
               label="Display Name"
               name="displayName"
               rules={[{ required: true, message: 'Please enter your name' }]}
+              style={styles.formItem}
             >
-              <Input placeholder="Enter your name" />
-            </Form.Item>
-
-            {/* Age input field */}
-            <Form.Item
-              label="Age"
-              name="age"
-            >
-              <Input type="number" placeholder="Enter your age" />
-            </Form.Item>
-
-            {/* City input field */}
-            <Form.Item
-              label="City"
-              name="city"
-            >
-              <Input placeholder="Enter your city" />
-            </Form.Item>
-
-            {/* Email field (read-only, fetched from authentication) */}
-            <Form.Item label="Email">
-              <Input value={user?.email || ''} disabled />
-            </Form.Item>
-
-            {/* Role field (read-only, shows current user role) */}
-            <Form.Item label="Role">
               <Input 
-                value={profileData?.role || 'user'} 
-                disabled 
-                style={{ textTransform: 'capitalize' }} // Capitalize role text
+                placeholder="Enter your name" 
+                style={styles.input}
               />
             </Form.Item>
 
-            {/* Submit button for saving changes */}
+            {/* Age */}
+            <Form.Item
+              label="Age"
+              name="age"
+              style={styles.formItem}
+            >
+              <Input 
+                type="number" 
+                placeholder="Enter your age" 
+                style={styles.input}
+              />
+            </Form.Item>
+
+            {/* City */}
+            <Form.Item
+              label="City"
+              name="city"
+              style={styles.formItem}
+            >
+              <Input 
+                placeholder="Enter your city" 
+                style={styles.input}
+              />
+            </Form.Item>
+
+            {/* Email (Disabled) */}
+            <Form.Item 
+              label="Email"
+              style={styles.formItem}
+            >
+              <Input 
+                value={user?.email || ''} 
+                disabled 
+                style={{...styles.input, ...styles.disabledInput}}
+              />
+            </Form.Item>
+
+            {/* Role (Disabled) */}
+            <Form.Item 
+              label="Role"
+              style={styles.formItem}
+            >
+              <Input 
+                value={profileData?.role || 'user'} 
+                disabled 
+                style={{
+                  ...styles.input,
+                  ...styles.disabledInput,
+                  textTransform: 'capitalize'
+                }}
+              />
+            </Form.Item>
+
+            {/* Submit Button */}
             <Form.Item>
               <Button 
-                type="primary"             // Primary styled button
-                htmlType="submit"          // Submit form on click
-                loading={loading}          // Show spinner during saving
-                icon={<SaveOutlined />}    // Save icon
-                block                      // Full width
-                size="large"               // Larger button
+                type="primary"
+                htmlType="submit"
+                loading={loading}
+                icon={<SaveOutlined />}
+                block
+                size="large"
+                style={styles.submitButton}
               >
                 Save Changes
               </Button>
@@ -107,5 +194,4 @@ const ProfileContent = ({ profileData, fileList, handleUpload, uploading, form, 
   );
 };
 
-// Export the component for use in profile page
 export default ProfileContent;
