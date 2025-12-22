@@ -1,85 +1,113 @@
-// Importing necessary React Router components for navigation and linking
 import { Link, useNavigate } from 'react-router-dom';
-
-// Importing UI components from Ant Design
 import { Layout, Menu, Button, Avatar, Dropdown, Space } from 'antd';
-
-// Importing Ant Design icons used in the navbar
 import { 
-  HomeOutlined,    // Home icon
-  UserOutlined,    // User profile icon
-  LogoutOutlined,  // Logout icon
+  HomeOutlined,
+  UserOutlined,
+  LogoutOutlined,
 } from '@ant-design/icons';
 
-// Destructuring Header from Ant Design Layout component
 const { Header } = Layout;
 
-// Defining the Navbar functional component
 const Navbar = () => {
-  // Hook from React Router used for programmatic navigation
   const navigate = useNavigate();
 
-  // Function to handle logout logic
-  // (In a real app, you'd clear user session or Firebase auth here)
   const handleLogout = async () => {
-    // Redirecting the user to the login page after logout
     navigate('/login');
   };
 
-  // Defining the main menu items (left side of the navbar)
   const menuItems = [
     {
-      key: 'home',                 // Unique key for the menu item
-      icon: <HomeOutlined />,      // Home icon
-      label: <Link to="/">Home</Link> // Clicking navigates to the home page
+      key: 'home',
+      icon: <HomeOutlined />,
+      label: <Link to="/">Home</Link>
     }
   ];
 
-  // Defining user dropdown menu items (if logged in)
   const userMenuItems = [
     {
-      key: 'profile',              // Unique key for profile menu item
-      icon: <UserOutlined />,      // Profile icon
-      label: <Link to="/profile">Profile</Link> // Navigates to profile page
+      key: 'profile',
+      icon: <UserOutlined />,
+      label: <Link to="/profile">Profile</Link>
     },
     {
-      key: 'logout',               // Unique key for logout item
-      icon: <LogoutOutlined />,    // Logout icon
-      label: 'Logout',             // Label text
-      onClick: handleLogout        // Calls logout function when clicked
+      key: 'logout',
+      icon: <LogoutOutlined />,
+      label: 'Logout',
+      onClick: handleLogout
     }
   ];
 
-  // Rendering the Navbar UI
+  // Inline styles for the navbar
+  const styles = {
+    header: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      padding: '0 24px',
+      backgroundColor: '#ffffff',
+      boxShadow: '0 1px 4px rgba(0, 0, 0, 0.06)',
+      height: '64px',
+      lineHeight: '64px'
+    },
+    leftSection: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '32px'
+    },
+    logo: {
+      fontSize: '20px',
+      fontWeight: 'bold',
+      color: '#1677ff',
+      textDecoration: 'none',
+      whiteSpace: 'nowrap'
+    },
+    menu: {
+      flex: 1,
+      minWidth: 0,
+      border: 'none',
+      lineHeight: '62px'
+    },
+    rightSection: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '16px'
+    },
+    loginButton: {
+      color: '#595959'
+    },
+    signupButton: {
+      backgroundColor: '#1677ff',
+      borderColor: '#1677ff'
+    }
+  };
+
   return (
-    // Header section of the layout with flexbox styling and background color
-    <Header className="flex items-center justify-between px-6 bg-white shadow-sm">
-      
-      {/* Left side: Logo and navigation menu */}
-      <div className="flex items-center gap-8">
-        {/* App title/logo, navigates to home page */}
-        <Link to="/" className="text-xl font-bold text-primary">
+    <Header style={styles.header}>
+      <div style={styles.leftSection}>
+        <Link to="/" style={styles.logo}>
           Firebase App
         </Link>
-
-        {/* Horizontal menu showing navigation links */}
         <Menu
-          mode="horizontal"             // Menu displayed horizontally
-          items={menuItems}             // Menu items array defined above
-          className="flex-1 min-w-0 border-0" // Styling for layout
+          mode="horizontal"
+          items={menuItems}
+          style={styles.menu}
         />
       </div>
       
-      {/* Right side: Authentication buttons (Login / Sign Up) */}
-      <div className="flex items-center gap-4">
+      <div style={styles.rightSection}>
         <Space>
-          {/* Login button navigates to /login page */}
-          <Button type="link" onClick={() => navigate('/login')}>
+          <Button 
+            type="link" 
+            onClick={() => navigate('/login')}
+            style={styles.loginButton}
+          >
             Login
           </Button>
-
-          {/* Sign Up button navigates to /register page */}
-          <Button type="primary" onClick={() => navigate('/register')}>
+          <Button 
+            type="primary" 
+            onClick={() => navigate('/register')}
+            style={styles.signupButton}
+          >
             Sign Up
           </Button>
         </Space>
@@ -88,5 +116,4 @@ const Navbar = () => {
   );
 };
 
-// Exporting Navbar component as the default export
 export default Navbar;
