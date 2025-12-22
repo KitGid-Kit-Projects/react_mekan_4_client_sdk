@@ -1,90 +1,156 @@
-// Import required UI components from Ant Design for layout and form creation
-import { Layout, Card, Form, Input, Button, message, Spin, InputNumber } from 'antd';
-// Import useful icons from Ant Design for navigation and save actions
+import { Layout, Card, Form, Input, Button, InputNumber } from 'antd';
 import { SaveOutlined, ArrowLeftOutlined } from '@ant-design/icons';
 
-// Extract Content component from Layout for simpler usage
 const { Content } = Layout;
 
-// Define the EditUserContent functional component
-// Receives navigation function, form instance, submit handler, and loading state as props
 const EditUserContent = ({ navigate, form, onFinish, loading }) => {
+  // Inline styles
+  const styles = {
+    content: {
+      backgroundColor: '#f0f2f5',
+      padding: '24px',
+      minHeight: 'calc(100vh - 64px)'
+    },
+    container: {
+      maxWidth: '800px',
+      margin: '0 auto'
+    },
+    backButton: {
+      marginBottom: '24px',
+      borderColor: '#d9d9d9',
+      color: '#595959'
+    },
+    card: {
+      borderRadius: '8px',
+      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.06)'
+    },
+    title: {
+      fontSize: '28px',
+      fontWeight: 700,
+      color: '#262626',
+      marginBottom: '24px'
+    },
+    formItem: {
+      marginBottom: '20px'
+    },
+    label: {
+      fontWeight: 500,
+      color: '#262626',
+      fontSize: '14px',
+      marginBottom: '6px',
+      display: 'block'
+    },
+    input: {
+      height: '40px',
+      fontSize: '14px',
+      borderRadius: '6px',
+      border: '1px solid #d9d9d9'
+    },
+    inputNumber: {
+      width: '100%',
+      height: '40px',
+      borderRadius: '6px',
+      border: '1px solid #d9d9d9'
+    },
+    submitButton: {
+      backgroundColor: '#1890ff',
+      borderColor: '#1890ff',
+      height: '48px',
+      fontSize: '16px',
+      fontWeight: 500,
+      width: '100%'
+    }
+  };
+
   return (
-    <Content className="p-6 bg-muted">
-      {/* Center content and limit width for better readability */}
-      <div className="max-w-2xl mx-auto">
-        {/* Back button to navigate to the user list page */}
-        <Button 
-          icon={<ArrowLeftOutlined />}       // Left arrow icon
-          onClick={() => navigate('/users')} // Navigate back on click
-          className="mb-6"                   // Margin below for spacing
+    <Content style={styles.content}>
+      <div style={styles.container}>
+        {/* Back Button */}
+        <Button
+          icon={<ArrowLeftOutlined />}
+          onClick={() => navigate('/users')}
+          style={styles.backButton}
         >
           Back to Users
         </Button>
 
-        {/* Main card container holding the edit form */}
-        <Card>
-          {/* Page heading */}
-          <h1 className="text-3xl font-bold text-foreground mb-6">
+        {/* Card Container */}
+        <Card style={styles.card}>
+          {/* Title */}
+          <h1 style={styles.title}>
             Edit User Data
           </h1>
 
-          {/* Ant Design form for editing user data */}
+          {/* Form */}
           <Form
-            form={form}           // Connect form to passed Form instance
-            layout="vertical"     // Use vertical alignment for labels and inputs
-            onFinish={onFinish}   // Handle form submission
-            size="large"          // Make input fields visually larger
+            form={form}
+            layout="vertical"
+            onFinish={onFinish}
+            size="large"
           >
-            {/* Name input field */}
+            {/* Name Field */}
             <Form.Item
-              label="Name" // Field label
-              name="displayName" // Field name (key)
-              rules={[{ required: true, message: 'Please enter name' }]} // Validation rule
+              label="Name"
+              name="displayName"
+              rules={[{ required: true, message: 'Please enter name' }]}
+              style={styles.formItem}
             >
-              <Input placeholder="Enter name" />
+              <Input 
+                placeholder="Enter name" 
+                style={styles.input}
+              />
             </Form.Item>
 
-            {/* Age input field */}
+            {/* Age Field */}
             <Form.Item
               label="Age"
               name="age"
               rules={[{ required: true, message: 'Please enter age' }]}
+              style={styles.formItem}
             >
-              <InputNumber 
+              <InputNumber
                 placeholder="Enter age"
-                min={1}               // Minimum allowed age
-                max={120}             // Maximum allowed age
-                className="w-full"    // Make input take full width
+                min={1}
+                max={120}
+                style={styles.inputNumber}
               />
             </Form.Item>
 
-            {/* City input field */}
+            {/* City Field */}
             <Form.Item
               label="City"
               name="city"
               rules={[{ required: true, message: 'Please enter city' }]}
+              style={styles.formItem}
             >
-              <Input placeholder="Enter city" />
+              <Input 
+                placeholder="Enter city" 
+                style={styles.input}
+              />
             </Form.Item>
 
-            {/* Optional photo URL field for user profile picture */}
+            {/* Photo URL Field */}
             <Form.Item
               label="Photo URL (Optional)"
               name="photoURL"
+              style={styles.formItem}
             >
-              <Input placeholder="Enter photo URL" />
+              <Input 
+                placeholder="Enter photo URL" 
+                style={styles.input}
+              />
             </Form.Item>
 
-            {/* Submit button for saving updated user data */}
+            {/* Submit Button */}
             <Form.Item>
-              <Button 
-                type="primary"           // Primary style button
-                htmlType="submit"        // Submit action type
-                loading={loading}        // Display spinner while loading
-                icon={<SaveOutlined />}  // Save icon for clarity
-                block                    // Full-width button
-                size="large"              // Larger button size for emphasis
+              <Button
+                type="primary"
+                htmlType="submit"
+                loading={loading}
+                icon={<SaveOutlined />}
+                block
+                size="large"
+                style={styles.submitButton}
               >
                 Update User Data
               </Button>
@@ -96,5 +162,4 @@ const EditUserContent = ({ navigate, form, onFinish, loading }) => {
   );
 };
 
-// Export the EditUserContent component for use in EditUser page
 export default EditUserContent;
