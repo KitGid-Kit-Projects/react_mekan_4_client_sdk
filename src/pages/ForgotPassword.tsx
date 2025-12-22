@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import { Card } from 'antd';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import useForgotPassword from '@/hooks/useForgotPassword';
-import ForgetPassWordEmail from '@/components/ForgotPassWordEmail';
+import ForgetPassWordEmail from '@/components/ForgetPassWordEmail';
+
 
 const ForgotPassword = () => {
   const { loading, setLoading, emailSent, setEmailSent, onFinish } = useForgotPassword();
@@ -80,7 +81,7 @@ const ForgotPassword = () => {
         </div>
 
         {/* Form Component */}
-        <ForgetPassWordEmail 
+        <ForgetPassWordEmail
           emailSent={emailSent} 
           onFinish={onFinish} 
           loading={loading} 
