@@ -10,7 +10,7 @@ import {
 } from 'firebase/auth';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { message } from 'antd';
-import { auth, db, googleProvider } from '@/firebase';
+import { auth, db, googleProvider } from '../firebase.ts';
 
 interface UserProfile {
   uid: string;
