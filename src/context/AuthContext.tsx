@@ -9,7 +9,7 @@ import {
   signInWithPopup
 } from 'firebase/auth';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
-import { auth, googleProvider, db } from '../firebase';
+import { auth, googleProvider, db } from '../firebase.ts';
 import { message } from 'antd';
 
 interface UserProfile {
