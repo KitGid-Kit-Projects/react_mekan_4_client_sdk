@@ -30,6 +30,11 @@ const Navbar = () => {
       key: 'users',
       icon: <TeamOutlined />,
       label: <Link to="/users">Users</Link>
+    },
+    {
+      key: 'profile',
+      icon: <UserOutlined />,
+      label: <Link to="/profile">Profile</Link>
     }
   ] : [
     {
@@ -71,18 +76,15 @@ const Navbar = () => {
     leftSection: {
       display: 'flex',
       alignItems: 'center',
-      gap: '32px'
+      gap: '32px',
+      flex: 1
     },
     logo: {
       fontSize: '20px',
       fontWeight: 'bold',
       color: '#1677ff',
       textDecoration: 'none',
-      whiteSpace: 'nowrap',
-      transition: 'color 0.3s'
-    },
-    logoHover: {
-      color: '#4096ff'
+      whiteSpace: 'nowrap'
     },
     menu: {
       flex: 1,
@@ -98,7 +100,7 @@ const Navbar = () => {
     },
     userInfo: {
       cursor: 'pointer',
-      padding: '8px 12px',
+      padding: '4px 8px',
       borderRadius: '6px',
       transition: 'background-color 0.3s'
     },
@@ -116,8 +118,8 @@ const Navbar = () => {
       height: '32px',
       fontSize: '14px',
       borderRadius: '6px',
-      cursor: 'pointer',
       backgroundColor: 'transparent',
+      cursor: 'pointer',
       transition: 'all 0.3s'
     },
     loginButtonHover: {
@@ -142,14 +144,6 @@ const Navbar = () => {
   };
 
   // Hover handler functions
-  const handleLogoHover = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.currentTarget.style.color = styles.logoHover.color;
-  };
-
-  const handleLogoLeave = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.currentTarget.style.color = styles.logo.color;
-  };
-
   const handleUserInfoHover = (e: React.MouseEvent<HTMLDivElement>) => {
     e.currentTarget.style.backgroundColor = styles.userInfoHover.backgroundColor;
   };
@@ -159,34 +153,37 @@ const Navbar = () => {
   };
 
   const handleLoginHover = (e: React.MouseEvent<HTMLElement>) => {
-    e.currentTarget.style.color = styles.loginButtonHover.color;
-    e.currentTarget.style.backgroundColor = styles.loginButtonHover.backgroundColor;
+    if (e.currentTarget.style) {
+      e.currentTarget.style.color = styles.loginButtonHover.color;
+      e.currentTarget.style.backgroundColor = styles.loginButtonHover.backgroundColor;
+    }
   };
 
   const handleLoginLeave = (e: React.MouseEvent<HTMLElement>) => {
-    e.currentTarget.style.color = styles.loginButton.color;
-    e.currentTarget.style.backgroundColor = styles.loginButton.backgroundColor;
+    if (e.currentTarget.style) {
+      e.currentTarget.style.color = styles.loginButton.color;
+      e.currentTarget.style.backgroundColor = styles.loginButton.backgroundColor;
+    }
   };
 
   const handleSignupHover = (e: React.MouseEvent<HTMLElement>) => {
-    e.currentTarget.style.backgroundColor = styles.signupButtonHover.backgroundColor;
-    e.currentTarget.style.boxShadow = styles.signupButtonHover.boxShadow;
+    if (e.currentTarget.style) {
+      e.currentTarget.style.backgroundColor = styles.signupButtonHover.backgroundColor;
+      e.currentTarget.style.boxShadow = styles.signupButtonHover.boxShadow;
+    }
   };
 
   const handleSignupLeave = (e: React.MouseEvent<HTMLElement>) => {
-    e.currentTarget.style.backgroundColor = styles.signupButton.backgroundColor;
-    e.currentTarget.style.boxShadow = 'none';
+    if (e.currentTarget.style) {
+      e.currentTarget.style.backgroundColor = styles.signupButton.backgroundColor;
+      e.currentTarget.style.boxShadow = 'none';
+    }
   };
 
   return (
     <Header style={styles.header}>
       <div style={styles.leftSection}>
-        <Link 
-          to="/" 
-          style={styles.logo}
-          onMouseEnter={handleLogoHover}
-          onMouseLeave={handleLogoLeave}
-        >
+        <Link to="/" style={styles.logo}>
           Firebase App
         </Link>
         <Menu
