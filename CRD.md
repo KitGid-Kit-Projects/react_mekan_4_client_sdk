@@ -7,7 +7,7 @@
 | 2  |    |──AuthContext                         | 34              | ./src/context/AuthContext.tsx                |
 | 3  |    |      └── firebase                    | 9               | ./src/firebase.js                            |
 | 4  |    |             └── .env                 | 63              | ./.env                                       |
-| 5  |    ├──Navbar                              | 41              | ./src/components/Navbar.tsx                  |
+| 5  |    ├──Navbar                              | 41              | ./src/context/Navbar.tsx                     |
 | 6  |    ├──ProtectedRoute                      | 120             | ./src/components/ProtectedRoute.tsx          |
 | 7  |    └──(Outlet → Routed)                   |                 |                                              |
 | 8  |          ├── Home                         | 35              | ./src/pages/Home.tsx                         |
