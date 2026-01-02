@@ -7,7 +7,7 @@
 | 3  |    |       └── firebase                   | 34              | ./src/firebase.js                            |
 | 4  |    |              └── .env                | 9               | ./.env                                       |
 | 5  |    ├──Navbar                              | 92              | ./src/components/Navbar.tsx                  |
-| 6  |    ├──ProtectedRoute                      | 41              | ./src/components/ProtectedRoute.tsx          |
+| 6  |    ├──ProtectedRoute                      | 41              | ./src/context/ProtectedRoute.tsx             |
 | 7  |    └──  (Outlet → Routed)                 |                 |                                              |
 | 8  |          ├── Home                         | 35              | ./src/pages/Home.tsx                         |
 | 9  |          |     ├── HomeContent            | 93              | ./src/components/HomeContent.tsx             |
